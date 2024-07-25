@@ -83,10 +83,10 @@
         </button>
       </div>
       <!-- Sección para mostrar la imagen generada -->
-      <div v-if="generatedImageUrl" class="mt-8">
+      <!-- <div v-if="generatedImageUrl" class="mt-8">
         <h2 class="text-4xl font-bold mb-4">Imagen Generada para el Capítulo:</h2>
         <img :src="generatedImageUrl" alt="Imagen Generada" class="max-w-full rounded-lg shadow-md">
-      </div>
+      </div> -->
     </form>
   </div>
 </template>
@@ -94,9 +94,10 @@
 <script setup>
 import { ref, computed } from 'vue'
 import axios from 'axios'
-import chatGpt from "~/api/chatgpt.js"
+import chatGpt from "~/api/chat.js"
 import dalle from '~/api/dalle'
 import { useI18n } from 'vue-i18n'
+import jsPDF from 'jspdf';
 
 const { locale } = useI18n()
 
@@ -155,6 +156,13 @@ const generatePrompt = () => {
   - Summary: ${summary.value}
   - Suggested title: ${title.value ? title.value : 'No title has been generated yet'}`
 }
+const generatePDF = (story) =>{
+  const doc = new jsPDF();
+
+  doc.text(story, 10, 10);
+
+  doc.save(title.value + '.pdf')
+}
 
 const submitForm = async () => {
   const formData = {
@@ -174,13 +182,15 @@ const submitForm = async () => {
   try {
     const response = await chatGpt(prompt);
     console.log('Generated Story:', response);
+
+    generatePDF(response);
     // Handle the generated story here, e.g., display it to the user or save it
 
 
     // Generar la imagen para el capítulo
-    const imagePrompt = `Create an image for the following chapter: ${summary.value}`;
-    const imageUrl = await dalle(imagePrompt);
-    console.log(imageUrl)
+    // const imagePrompt = `Create an image for the following chapter: ${summary.value}`;
+    // const imageUrl = await dalle(imagePrompt);
+    // console.log(imageUrl)
     // generatedImageUrl.value = imageUrl;
 
   } catch (error) {

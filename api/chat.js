@@ -4,7 +4,7 @@ import axios from '~/api/axios'; // Ensure this path is correct
 
 const chatgpt = async (prompt) => {
     try {
-        const response = await axios.post('/chatgpt', { prompt });
+        const response = await axios.post('/gpt/chat', { prompt });
         if (response.data) {
             let cleanTitle = response.data.response;
             cleanTitle = cleanTitle.replace(/^"|"$/g, '');

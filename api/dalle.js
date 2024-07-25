@@ -2,7 +2,7 @@ import axios from '~/api/axios'; // Asegúrate de que esta ruta sea correcta
 
 const dalle = async (prompt) => {
     try {
-        const response = await axios.post('/dalle', { prompt });
+        const response = await axios.post('/gpt/dalle', { prompt });
         if (response.data && response.data.imageUrl) {
             return response.data.imageUrl;
         }
