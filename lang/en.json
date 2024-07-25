@@ -1,0 +1,51 @@
+{
+    "welcome": "Hello everyone",
+    "index": {
+        "presentation": "Create your personalized story with our AI. Upload images of your characters, define names and plot. Get a unique book with illustrations that bring your ideas to life.",
+        "future": "future",
+        "the": "The",
+        "of": "",
+        "books": "of books",
+        "iaExperience": "AI Experience",
+        "create": "Create my",
+        "bookNow": "book now",
+        "what": "What",
+        "do": "do we do?"
+    },
+    "privacyPolicy": {
+        "title": "Privacy Policy",
+        "lastUpdated": "Last updated: 19/09/2023",
+        "welcomeMessage": "Welcome to litlab.com our website. We take the privacy of our users very seriously. This Privacy Policy describes how we collect, use, and protect the information we obtain from our users.",
+        "section1Title": "1. Information We Collect",
+        "section1Content": [
+            "1.1. Personal Information: When you visit our website, we may collect personal information that you voluntarily provide, such as your name, shipping address, email address, and phone number.",
+            "1.2. Shipping Data: If you make a purchase on our website, we will collect shipping information, such as your shipping address and delivery-related details.",
+            "1.3. Images: If you choose to upload or provide images on our website, we will collect and store these images according to your consent."
+        ],
+        "section2Title": "2. Use of Information",
+        "section2Content": [
+            "2.1. We use the personal information we collect to:",
+            "- Process your orders and deliveries.",
+            "- Manage your user account.",
+            "- Provide you with information about products and services.",
+            "- Respond to your inquiries and provide personalized service."
+        ],
+        "section3Title": "3. Sharing Information",
+        "section3Content": "We do not share your personal information with third parties without your consent, except where necessary to comply with legal obligations, protect our rights or safety, or provide payment processing and shipping services.",
+        "section4Title": "4. Data Security",
+        "section4Content": "We implement security measures to protect your personal information and the images you provide to us. However, please be aware that no transmission over the Internet is completely secure, and we cannot guarantee the absolute security of the data you send us.",
+        "section5Title": "5. Your Rights",
+        "section5Content": "You have the right to access, correct, update, or delete your personal information. You can also withdraw your consent at any time. To exercise these rights or ask questions about our privacy policy, please contact us at .",
+        "section6Title": "6. Changes to This Policy",
+        "section6Content": "We reserve the right to update this Privacy Policy at any time. We recommend reviewing it periodically to stay informed about any changes.",
+        "section7Title": "7. Consent",
+        "section7Content": "By using our website and providing your information, you consent to our Privacy Policy and agree to the collection and use of your information as described in the terms set forth here.",
+        "contactTitle": "Contact",
+        "contactMessage": "If you have any questions or concerns about this Privacy Policy, please contact us at"
+    },
+    "header":{
+        "home": "Home",
+        "products": "Products",
+        "us": "About Us"
+    }
+}

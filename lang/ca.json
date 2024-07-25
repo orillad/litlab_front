@@ -1,0 +1,51 @@
+{
+    "welcome": "Hola a tots",
+    "index": {
+        "presentation": "Crea el teu conte personalitzat amb la nostra IA. Puja imatges dels teus personatges, defineix noms i trama. Obtingues un llibre únic amb il·lustracions que donen vida a les teves idees.",
+        "future": "futur",
+        "the": "El",
+        "of": "",
+        "books": "dels llibres",
+        "iaExperience": "Experiència IA",
+        "create": "Crea el meu",
+        "bookNow": "llibre ara",
+        "what": "Què",
+        "do": "fem?"
+    },
+    "privacyPolicy": {
+        "title": "Política de Privacitat",
+        "lastUpdated": "Data d'última actualització: 19/09/2023",
+        "welcomeMessage": "Benvingut a litlab.com el nostre lloc web. Ens prenem molt seriosament la privacitat dels nostres usuaris. Aquesta Política de Privacitat descriu com recopilem, utilitzem i protegim la informació que obtenim dels nostres usuaris.",
+        "section1Title": "1. Informació que Recopilem",
+        "section1Content": [
+            "1.1. Informació Personal: Quan visites el nostre lloc web, podem recopilar informació personal que proporciones voluntàriament, com el teu nom, adreça d'enviament, adreça de correu electrònic i número de telèfon.",
+            "1.2. Dades d'Enviament: Si fas una compra al nostre lloc web, recopil·larem informació d'enviament, com la teva adreça d'enviament i detalls relacionats amb la entrega.",
+            "1.3. Imatges: Si decides carregar o proporcionar imatges al nostre lloc web, recopil·larem i emmagatzemarem aquestes imatges segons el teu consentiment."
+        ],
+        "section2Title": "2. Ús de la Informació",
+        "section2Content": [
+            "2.1. Utilitzem la informació personal que recopilem per:",
+            "- Processar les teves comandes i entregues.",
+            "- Gestionar el teu compte d'usuari.",
+            "- Proporcionar-te informació sobre productes i serveis.",
+            "- Respondre a les teves preguntes i proporcionar un servei personalitzat."
+        ],
+        "section3Title": "3. Compartir Informació",
+        "section3Content": "No compartim la teva informació personal amb tercers sense el teu consentiment, excepte quan sigui necessari per complir amb obligacions legals, protegir els nostres drets o seguretat, o per prestar serveis de processament de pagaments i enviament.",
+        "section4Title": "4. Seguretat de Dades",
+        "section4Content": "Implementem mesures de seguretat per protegir la teva informació personal i les imatges que ens proporciones. No obstant això, tingues en compte que cap transmissió per Internet és completament segura, i no podem garantir la seguretat absoluta de les dades que ens envies.",
+        "section5Title": "5. Els Teus Drets",
+        "section5Content": "Tens el dret d'accedir, corregir, actualitzar o eliminar la teva informació personal. També pots retirar el teu consentiment en qualsevol moment. Per exercir aquests drets o per fer preguntes sobre la nostra política de privacitat, si us plau, posa't en contacte amb nosaltres a través de .",
+        "section6Title": "6. Canvis en aquesta Política",
+        "section6Content": "Ens reservem el dret d'actualitzar aquesta Política de Privacitat en qualsevol moment. Et recomanem revisar-la periòdicament per estar al corrent de qualsevol canvi.",
+        "section7Title": "7. Consentiment",
+        "section7Content": "En utilitzar el nostre lloc web i proporcionar la teva informació, acceptes la nostra Política de Privacitat i consents la recopilació i ús de la teva informació d'acord amb els termes aquí establerts.",
+        "contactTitle": "Contacte",
+        "contactMessage": "Si tens alguna pregunta o inquietud sobre aquesta Política de Privacitat, si us plau posa't en contacte amb nosaltres a través de"
+    },
+    "header":{
+        "home": "Inici",
+        "products": "Productes",
+        "us": "Nosaltres"
+    }
+}
