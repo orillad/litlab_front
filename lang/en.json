@@ -47,5 +47,29 @@
         "home": "Home",
         "products": "Products",
         "us": "About Us"
+    },
+    "form":{
+        "step1Title": "1.",
+        "question1": "What is the theme of your book?",
+        "isChildrensBook": "Is it a children's book?",
+        "yes": "Yes",
+        "no": "No",
+        "units": "How many units do you want?",
+        "step2Title": "2.",
+        "bookNeedsProtagonist": "Every book needs its protagonist.",
+        "totalCharacters": "How many characters will your book have in total?",
+        "addNamesAndRoles": "Add the names and roles of your story's protagonists.",
+        "principal": "Principal",
+        "secondary": "Secondary",
+        "tertiary": "Tertiary",
+        "step3Title": "3.",
+        "summarizeStory": "Summarize your story in a maximum of 300 words.",
+        "writeSummary": "Write your summary here...",
+        "wordCount": "words",
+        "writeTitle": "Write the title here",
+        "generateTitle": "Generate Title Automatically",
+        "generateBook": "GENERATE BOOK",
+        "generatingBook": "Generating the book...",
+        "chapter": "Chapter"
     }
 }

@@ -11,14 +11,19 @@
   },
   "dependencies": {
     "@nuxtjs/i18n": "^8.3.1",
+    "@primevue/themes": "^4.0.4",
+    "@stripe/stripe-js": "^4.1.0",
     "axios": "^1.7.2",
     "country-state-city": "^3.2.1",
     "jspdf": "^2.5.1",
+    "language-list": "^0.0.3",
     "nuxt": "^3.12.3",
+    "primevue": "^4.0.4",
     "provinces": "^1.11.0",
     "vue": "latest"
   },
   "devDependencies": {
+    "@primevue/nuxt-module": "^4.0.4",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.39",
     "tailwindcss": "^3.4.4"

@@ -47,5 +47,29 @@
         "home": "Inicio",
         "products": "Prodcutos",
         "us": "Nosotros"
+    },
+    "form":{
+        "step1Title": "1.",
+        "question1": "¿De qué temática es tu libro?",
+        "isChildrensBook": "¿Es un libro infantil?",
+        "yes": "Sí",
+        "no": "No",
+        "units": "¿Cuántas unidades quieres?",
+        "step2Title": "2.",
+        "bookNeedsProtagonist": "Todo libro requiere su protagonista.",
+        "totalCharacters": "¿Cuántos personajes tendrá tu libro en total?",
+        "addNamesAndRoles": "Añade los nombres y categorías de los protagonistas de tu historia.",
+        "principal": "Principal",
+        "secondary": "Secondario",
+        "tertiary": "Terciario",
+        "step3Title": "3.",
+        "summarizeStory": "Resúmenos tu historia en un máximo de 300 palabras.",
+        "writeSummary": "Escribe aquí tu resumen...",
+        "wordCount": "palabras",
+        "writeTitle": "Escribe el título aquí",
+        "generateTitle": "Generar Título Automático",
+        "generateBook": "GENERAR LIBRO",
+        "generatingBook": "Generando el libro...",
+        "chapter": "Capítulo"
     }
 }

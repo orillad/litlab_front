@@ -47,5 +47,29 @@
         "home": "Inici",
         "products": "Productes",
         "us": "Nosaltres"
+    },
+    "form":{
+        "step1Title": "1.",
+        "question1": "De quina temàtica és el teu llibre?",
+        "isChildrensBook": "És un llibre infantil?",
+        "yes": "Sí",
+        "no": "No",
+        "units": "Quantes unitats vols?",
+        "step2Title": "2.",
+        "bookNeedsProtagonist": "Tot llibre necessita el seu protagonista.",
+        "totalCharacters": "Quants personatges tindrà el teu llibre en total?",
+        "addNamesAndRoles": "Afegeix els noms i categories dels protagonistes de la teva història.",
+        "principal": "Principal",
+        "secondary": "Secondari",
+        "tertiary": "Terciari",
+        "step3Title": "3.",
+        "summarizeStory": "Resumeix-nos la teva història en un màxim de 300 paraules.",
+        "writeSummary": "Escriu aquí el teu resum...",
+        "wordCount": "paraules",
+        "writeTitle": "Escriu el títol aquí",
+        "generateTitle": "Genera Títol Automàtic",
+        "generateBook": "GENERAR LLIBRE",
+        "generatingBook": "Generant el llibre...",
+        "chapter": "Capítol"
     }
 }

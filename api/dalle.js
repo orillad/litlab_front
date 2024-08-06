@@ -7,6 +7,7 @@ const dalle = async (prompt) => {
             return response.data.imageUrl;
         }
     } catch (e) {
+        console.log("ERRRORRRRR");
         console.log(e);
         return e;
     }
