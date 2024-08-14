@@ -11,6 +11,10 @@ export default defineNuxtConfig({
   devServer: {
     port: 8000
   },
+  server: {
+    host: '0.0.0.0', // Exposes the server to all network interfaces
+    port: 8000, // The port you want the server to run on
+  },
   i18n: {
     strategy: 'no_prefix',
     vueI18n: './i18n.config.ts',

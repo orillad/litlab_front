@@ -1,4 +1,4 @@
-// litlabfront/api/chatgpt.js
+// litlab_front/api/chat.js
 
 import axios from '~/api/axios'; // Ensure this path is correct
 

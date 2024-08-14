@@ -2,12 +2,11 @@ import axios from '~/api/axios'; // Asegúrate de que esta ruta sea correcta
 
 const dalle = async (prompt) => {
     try {
-        const response = await axios.post('/gpt/dalle', { prompt });
-        if (response.data && response.data.imageUrl) {
-            return response.data.imageUrl;
-        }
+        const response = await axios.post('/gpt/dalle', { prompt }, { responseType: 'blob' });
+        const imageUrl = URL.createObjectURL(response.data);
+        return imageUrl;
     } catch (e) {
-        console.log("ERRRORRRRR");
+        console.log("ERROR:");
         console.log(e);
         return e;
     }

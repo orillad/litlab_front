@@ -1,3 +1,4 @@
+<!-- litlab_front/pages/form.vue -->
 <template>
   <div class="max-w-2xl mx-auto p-4 text-center">
     <form @submit.prevent="submitForm">
@@ -45,14 +46,9 @@
               class="bg-secondary text-black hover:text-gray-700 hover:bg-secondary_hovered h-full w-20  rounded-l-full cursor-pointer outline-none">
               <span class="m-auto text-2xl font-thin">−</span>
             </button>
-            <input
-  type="number"
-  class="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none focus:outline-none text-center w-full bg-secondary font-semibold text-md hover:text-black focus:text-black md:text-basecursor-default flex items-center text-gray-700 outline-none"
-  name="custom-input-number"
-  v-model="totalProtagonists"
-  min="1"
-  @input="updateProtagonists"
-/>
+            <input type="number"
+              class="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none focus:outline-none text-center w-full bg-secondary font-semibold text-md hover:text-black focus:text-black md:text-basecursor-default flex items-center text-gray-700 outline-none"
+              name="custom-input-number" v-model="totalProtagonists" min="1" @input="updateProtagonists" />
 
             <button data-action="increment" @click.prevent="increment"
               class="bg-secondary text-black hover:text-gray-700 hover:bg-secondary_hovered h-full w-20  rounded-r-full cursor-pointer outline-none">
@@ -116,11 +112,13 @@
           <span>{{ $t('form.generateBook') }}</span>
           <img src="~/assets/images/book.svg" alt="" class="h-6 w-6">
         </button>
+
+
         <!-- Spinner -->
         <div v-if="loading" class="spinner-overlay">
           <div class="spinner-container">
-            <div class="spinner"></div>
-            <p class="spinner-text">{{ $t('form.generatingBook') }}</p>
+            
+            <Book/>
             <p class="spinner-text">{{ $t('form.chapter') }} {{ chapterNumberSpin }}/10</p>
           </div>
         </div>
@@ -129,15 +127,20 @@
   </div>
 
 
+
 </template>
 
 <script setup>
+import Book from '~/components/Book.vue'
 import { ref } from 'vue'
 import axios from 'axios'
 import chatGpt from "~/api/chat.js"
 import dalle from "~/api/dalle.js"
+import edit from "~/api/edit.js"
 import { useI18n } from 'vue-i18n'
 import jsPDF from 'jspdf';
+// import sharp from 'sharp'
+
 // var languages = require('language-list')();
 
 // console.log(languages.getLanguageNames())
@@ -154,7 +157,13 @@ const wordCount = ref(0)
 const loading = ref(false)
 const chapterNumberSpin = ref(1)
 
+
+
+
+
+
 const updateProtagonists = () => {
+  generateEditImage("mejora la imagen", outputPath)
   const newTotal = parseInt(totalProtagonists.value)
   if (newTotal > protagonists.value.length) {
     for (let i = protagonists.value.length; i < newTotal; i++) {
@@ -178,13 +187,17 @@ const onImageChange = (event, index) => {
 
 const generateTitle = async () => {
   if (summary.value) {
-    let combinedSummary = summary.value + "\n Dame un título para esta historia.";
+    let combinedSummary = summary.value + "\n Please generate a creative and engaging title for this story.";
     const text = await chatGpt(combinedSummary);
+    console.log(text)
     title.value = text.trim();
   } else {
-    console.error('Summary is not defined or has no value');
+    console.error('Summary is not defined or is empty');
   }
 };
+
+
+
 
 const countWords = () => {
   wordCount.value = summary.value.trim().split(/\s+/).length
@@ -231,15 +244,16 @@ const summarizeChapterText = async (chapterText) => {
 
 const generateImageForChapter = async (chapterText, chapterNumber) => {
   const summarizedText = await summarizeChapterText(chapterText);
-  const promptForImage = `Generate an image without text for Chapter ${chapterNumber} of a story based on the following description: ${summarizedText}`;
+  const promptForImage = `Create an image based on the following description for Chapter ${chapterNumber} of a story. Ensure there is no text in the image. Description: ${summarizedText}`;
+
 
   // Llama a la API para obtener la URL de la imagen
   const imageUrl = await dalle(promptForImage);
 
+  console.log(imageUrl);
+
   // Descarga la imagen como un Blob
-  const response = await fetch(imageUrl);
-  console.log(response);
-  
+  const response = await fetch(imageUrl, { mode: 'cors' });
   const imageBlob = await response.blob();
 
   // Convierte el Blob a una URL de objeto
@@ -247,6 +261,59 @@ const generateImageForChapter = async (chapterText, chapterNumber) => {
 
   return imageObjectURL;
 }
+
+const generateEditImage = async (prompt, imagePath) => {
+    try {
+        // Log the image path to confirm it's passed correctly
+        console.log(imagePath);
+        
+        // Call the API to get the edited image URL
+        const imageUrl = await edit(prompt, imagePath);
+        console.log(imageUrl);
+
+        // Fetch the image from the returned URL with CORS mode
+        const response = await fetch(imageUrl, { mode: 'cors' });
+        
+        // Check if the fetch was successful
+        if (!response.ok) {
+            throw new Error(`Failed to fetch image: ${response.statusText}`);
+        }
+        
+        // Convert the response to a Blob
+        const imageBlob = await response.blob();
+        console.log(response);
+        console.log(imageBlob);
+
+        // Convert the Blob to an object URL
+        const imageObjectURL = URL.createObjectURL(imageBlob);
+
+        // Return the object URL for further use
+        return imageObjectURL;
+    } catch (error) {
+        console.error('Error generating edited image:', error);
+        // Handle errors appropriately (e.g., return a fallback value or throw the error)
+        throw error;
+    }
+}
+
+
+const loadImageToCanvas = async (url) => {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = 'Anonymous';
+    img.onload = function () {
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      resolve(canvas.toDataURL('image/png'));
+    };
+    img.onerror = reject;
+    img.src = url;
+  });
+}
+
 
 const generateChapter = async (chapterNumber) => {
   const prompt = generatePromptForChapter(chapterNumber);
@@ -284,13 +351,12 @@ const generatePDF = async (chapters) => {
   // Contenido
   for (const [index, chapter] of chapters.entries()) {
     doc.setFontSize(chapterFontSize);
-    doc.text(`Capítulo ${index + 1}`, margin, y);
     y += lineHeight * 2;
 
     // Insertar imagen del capítulo
     if (chapter.imageUrl) {
       const base64Image = await loadImageToCanvas(chapter.imageUrl);
-      doc.addImage(base64Image, 'PNG', margin, y, pageWidth - margin * 2, 100); 
+      doc.addImage(base64Image, 'PNG', margin, y, pageWidth - margin * 2, 100);
       y += 110;  // Ajustar según el tamaño de la imagen
     }
 
@@ -315,22 +381,6 @@ const generatePDF = async (chapters) => {
   doc.save(title.value ? title.value + '.pdf' : 'story.pdf');
 }
 
-const loadImageToCanvas = async (url) => {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.crossOrigin = 'Anonymous';
-    img.onload = function () {
-      const canvas = document.createElement('canvas');
-      canvas.width = img.width;
-      canvas.height = img.height;
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0);
-      resolve(canvas.toDataURL('image/png'));
-    };
-    img.onerror = reject;
-    img.src = url;
-  });
-}
 
 
 const submitForm = async () => {
@@ -338,7 +388,7 @@ const submitForm = async () => {
 
   try {
     const chapters = [];
-    for (let i = 1; i <= selectedUnits.value; i++) {
+    for (let i = 1; i <= 10; i++) {
       const chapter = await generateChapter(i);
       chapters.push(chapter);
       chapterNumberSpin.value++;
@@ -354,7 +404,7 @@ const submitForm = async () => {
 }
 
 function decrement() {
-  if(totalProtagonists.value > 1){
+  if (totalProtagonists.value > 1) {
     totalProtagonists.value--;
     updateProtagonists();
   }
