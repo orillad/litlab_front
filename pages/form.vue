@@ -107,7 +107,42 @@
         </div>
       </div>
 
+      <div class="  flex justify-center items-center">
+        <div class="bg-secondary rounded-lg p-6 mb-2">
+          <label class="block text-primary text-sm font-bold mb-2" for="language">
+            {{ $t('form.lang') }}
+            <span class="inline-block ml-2">
+              <img src="~/assets/images/world.svg" alt="">
+            </span>
+          </label>
+          <select id="language" required v-model="selectedLanguage"
+            class="block  w-full border border-black bg-secondary text-primary py-2 px-3 pr-8 rounded leading-tight focus:outline-none focus:text-primary">
+            <option selected disabled>Choose here</option>
+            <option value="arabic">{{ $t('lang.Árabe') }}</option>
+            <option value="catalan">{{ $t('lang.Catalán') }}</option>
+            <option value="spanish">{{ $t('lang.Español') }}</option>
+            <option value="french">{{ $t('lang.Francés') }}</option>
+            <option value="galician">{{ $t('lang.Gallego') }}</option>
+            <option value="hindi">{{ $t('lang.Hindi') }}</option>
+            <option value="english">{{ $t('lang.Inglés') }}</option>
+            <option value="italian">{{ $t('lang.Italiano') }}</option>
+            <option value="mandarin">{{ $t('lang.Mandarín') }}</option>
+            <option value="portuguese">{{ $t('lang.Portugués') }}</option>
+            <option value="russian">{{ $t('lang.Ruso') }}</option>
+            <option value="basque">{{ $t('lang.Vasco') }}</option>
+          </select>
+
+
+        </div>
+      </div>
+
+
+
+
       <div class="flex justify-center items-center">
+
+
+
         <button type="submit" class="bg-secondary text-black px-6 py-3 rounded-full flex items-center space-x-2">
           <span>{{ $t('form.generateBook') }}</span>
           <img src="~/assets/images/book.svg" alt="" class="h-6 w-6">
@@ -117,8 +152,8 @@
         <!-- Spinner -->
         <div v-if="loading" class="spinner-overlay">
           <div class="spinner-container">
-            
-            <Book/>
+
+            <Book />
             <p class="spinner-text">{{ $t('form.chapter') }} {{ chapterNumberSpin }}/10</p>
           </div>
         </div>
@@ -139,8 +174,8 @@ import dalle from "~/api/dalle.js"
 import edit from "~/api/edit.js"
 import { useI18n } from 'vue-i18n'
 import jsPDF from 'jspdf';
+import generateBook from '~/api/generate'
 // import sharp from 'sharp'
-
 // var languages = require('language-list')();
 
 // console.log(languages.getLanguageNames())
@@ -153,17 +188,21 @@ const totalProtagonists = ref(1)
 const protagonists = ref([{ image: null, name: '', role: 'Principal' }])
 const summary = ref('')
 const title = ref('')
+const selectedLanguage = ref("sdfsdf")
 const wordCount = ref(0)
 const loading = ref(false)
 const chapterNumberSpin = ref(1)
 
 
+const displayedLanguage = computed(() => {
+  return selectedLanguage.value ? $t(`lang.${selectedLanguage.value}`) : 'Choose here';
+});
 
 
 
 
 const updateProtagonists = () => {
-  generateEditImage("mejora la imagen", outputPath)
+  // generateEditImage("mejora la imagen", outputPath)
   const newTotal = parseInt(totalProtagonists.value)
   if (newTotal > protagonists.value.length) {
     for (let i = protagonists.value.length; i < newTotal; i++) {
@@ -187,7 +226,7 @@ const onImageChange = (event, index) => {
 
 const generateTitle = async () => {
   if (summary.value) {
-    let combinedSummary = summary.value + "\n Please generate a creative and engaging title for this story.";
+    let combinedSummary = summary.value + "\nPlease generate a creative and engaging title for this story in " + selectedLanguage.value + ". Make sure the title reflects the tone and theme of the story, and captures the reader's attention effectively.";
     const text = await chatGpt(combinedSummary);
     console.log(text)
     title.value = text.trim();
@@ -206,30 +245,14 @@ const countWords = () => {
   }
 }
 const generatePromptForChapter = (chapterNumber) => {
-  const prompts = {
-    en: `Generate Chapter ${chapterNumber} of an extensive story in English based on the following details:
-    - Each chapter should be a minimum of 2000 words.
-    - Include detailed character development, rich descriptions, and substantial dialogue.
-    - The story should explore both internal and external conflicts.
-    - Ensure a coherent narrative style and tone with clear evolution of plot and characters.`,
+  const prompt = `Generate Chapter ${chapterNumber} of an extensive story in ${selectedLanguage.value} based on the following details:
+  - Each chapter should be a minimum of 2000 words.
+  - Include detailed character development, rich descriptions, and substantial dialogue.
+  - Explore both internal and external conflicts.
+  - Ensure a coherent narrative style and tone with a clear evolution of plot and characters.`;
 
-    es: `Genera el Capítulo ${chapterNumber} de un cuento extenso en español basándote en los siguientes detalles:
-    - Cada capítulo debe tener un mínimo de 2000 palabras.
-    - Incluye desarrollo detallado de personajes, descripciones ricas y diálogos sustanciales.
-    - La historia debe abordar tanto conflictos internos como externos.
-    - Asegúrate de mantener un estilo narrativo coherente con una evolución clara de la trama y personajes.`,
 
-    ca: `Genera el Capítol ${chapterNumber} d'un conte extens en català basat en els següents detalls:
-    - Cada capítol ha de tenir un mínim de 2000 paraules.
-    - Inclou desenvolupament detallat dels personatges, descripcions riques i diàlegs substancials.
-    - La història ha d'abordar tant conflictes interns com externs.
-    - Mantingues un estil narratiu coherent amb una evolució clara de la trama i personatges.`
-  }
-
-  const currentLanguage = locale.value
-  const languagePrompt = prompts[currentLanguage] || prompts['en']
-
-  return `${languagePrompt}
+  return `${prompt}
   - Is it a children's book: ${isChildrensBook.value}
   - Protagonists: ${protagonists.value.map(p => `${p.name} (${p.role})`).join(', ')}
   - Summary: ${summary.value}
@@ -244,56 +267,48 @@ const summarizeChapterText = async (chapterText) => {
 
 const generateImageForChapter = async (chapterText, chapterNumber) => {
   const summarizedText = await summarizeChapterText(chapterText);
-  const promptForImage = `Create an image based on the following description for Chapter ${chapterNumber} of a story. Ensure there is no text in the image. Description: ${summarizedText}`;
+  const promptForImage = `Create a detailed image that visually represents the key themes and atmosphere of Chapter ${chapterNumber} of a story. Focus on capturing the essence and mood of the described scenes without including any text. Ensure the image conveys the narrative elements effectively, using the following description as inspiration: ${summarizedText}`;
 
 
   // Llama a la API para obtener la URL de la imagen
   const imageUrl = await dalle(promptForImage);
 
   console.log(imageUrl);
-
-  // Descarga la imagen como un Blob
-  const response = await fetch(imageUrl, { mode: 'cors' });
-  const imageBlob = await response.blob();
-
-  // Convierte el Blob a una URL de objeto
-  const imageObjectURL = URL.createObjectURL(imageBlob);
-
-  return imageObjectURL;
+  return imageUrl;
 }
 
 const generateEditImage = async (prompt, imagePath) => {
-    try {
-        // Log the image path to confirm it's passed correctly
-        console.log(imagePath);
-        
-        // Call the API to get the edited image URL
-        const imageUrl = await edit(prompt, imagePath);
-        console.log(imageUrl);
+  try {
+    // Log the image path to confirm it's passed correctly
+    console.log(imagePath);
 
-        // Fetch the image from the returned URL with CORS mode
-        const response = await fetch(imageUrl, { mode: 'cors' });
-        
-        // Check if the fetch was successful
-        if (!response.ok) {
-            throw new Error(`Failed to fetch image: ${response.statusText}`);
-        }
-        
-        // Convert the response to a Blob
-        const imageBlob = await response.blob();
-        console.log(response);
-        console.log(imageBlob);
+    // Call the API to get the edited image URL
+    const imageUrl = await edit(prompt, imagePath);
+    console.log(imageUrl);
 
-        // Convert the Blob to an object URL
-        const imageObjectURL = URL.createObjectURL(imageBlob);
+    // Fetch the image from the returned URL with CORS mode
+    const response = await fetch(imageUrl, { mode: 'cors' });
 
-        // Return the object URL for further use
-        return imageObjectURL;
-    } catch (error) {
-        console.error('Error generating edited image:', error);
-        // Handle errors appropriately (e.g., return a fallback value or throw the error)
-        throw error;
+    // Check if the fetch was successful
+    if (!response.ok) {
+      throw new Error(`Failed to fetch image: ${response.statusText}`);
     }
+
+    // Convert the response to a Blob
+    const imageBlob = await response.blob();
+    console.log(response);
+    console.log(imageBlob);
+
+    // Convert the Blob to an object URL
+    const imageObjectURL = URL.createObjectURL(imageBlob);
+
+    // Return the object URL for further use
+    return imageObjectURL;
+  } catch (error) {
+    console.error('Error generating edited image:', error);
+    // Handle errors appropriately (e.g., return a fallback value or throw the error)
+    throw error;
+  }
 }
 
 
@@ -333,6 +348,9 @@ const generateChapter = async (chapterNumber) => {
 
 const generatePDF = async (chapters) => {
   const doc = new jsPDF('p', 'mm', 'a4');
+
+  const filePath = path.join(baseDir, `${title || 'story'}.pdf`);
+  doc.pipe(fs.createWriteStream(filePath));
   const pageHeight = doc.internal.pageSize.height;
   const pageWidth = doc.internal.pageSize.width;
   const margin = 20;
@@ -343,6 +361,9 @@ const generatePDF = async (chapters) => {
 
   let y = margin;
 
+  // doc.addFileToVFS("NotoSans.ttf", NotoSans);
+  // doc.addFont("NotoSans.ttf", "NotoSans", "normal");
+  // doc.setFont("NotoSans", "normal");
   // Portada
   doc.setFontSize(titleFontSize);
   doc.text(title.value, pageWidth / 2, pageHeight / 2, { align: 'center' });
@@ -378,7 +399,9 @@ const generatePDF = async (chapters) => {
     }
   }
 
-  doc.save(title.value ? title.value + '.pdf' : 'story.pdf');
+  doc.end();
+  res.json({ success: true, bookId: title || 'story' });
+
 }
 
 
@@ -388,17 +411,28 @@ const submitForm = async () => {
 
   try {
     const chapters = [];
-    for (let i = 1; i <= 10; i++) {
+    const chapterNumbers = 1;
+    for (let i = 1; i <= chapterNumbers; i++) {
       const chapter = await generateChapter(i);
       chapters.push(chapter);
       chapterNumberSpin.value++;
     }
 
     loading.value = false;
-    generatePDF(chapters);
+
+    // Enviar la data del libro al backend para generar el libro y guardar temporalmente
+    const response = await generateBook(title.value, chapters);
+    console.log(response);
+
+
+    if (response.success) {
+      // Redirigir a la página de pago
+      window.location.href = `/payment?bookId=${response.bookId}`;
+    } else {
+      console.error('Error generating the book on the server');
+    }
   } catch (error) {
     loading.value = false;
-
     console.error('Error generating story or image:', error);
   }
 }

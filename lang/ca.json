@@ -70,6 +70,23 @@
         "generateTitle": "Genera Títol Automàtic",
         "generateBook": "GENERAR LLIBRE",
         "generatingBook": "Generant el llibre...",
-        "chapter": "Capítol"
+        "chapter": "Capítol",
+        "lang": "Llengua del llibre."
+        
+    },
+
+    "lang":{
+        "Árabe": "Àrab",
+        "Catalán": "Català",
+        "Español": "Espanyol",
+        "Francés": "Francès",
+        "Gallego": "Gallec",
+        "Hindi": "Hindi",
+        "Inglés": "Anglès",
+        "Italiano": "Italià",
+        "Mandarín": "Mandarí",
+        "Portugués": "Portuguès",
+        "Ruso": "Rus",
+        "Vasco": "Basc"
     }
 }

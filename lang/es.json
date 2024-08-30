@@ -70,6 +70,21 @@
         "generateTitle": "Generar Título Automático",
         "generateBook": "GENERAR LIBRO",
         "generatingBook": "Generando el libro...",
-        "chapter": "Capítulo"
+        "chapter": "Capítulo",
+        "lang": "Idioma del libro."
+    },
+    "lang": {
+        "Árabe": "Árabe",
+        "Catalán": "Catalán",
+        "Español": "Español",
+        "Francés": "Francés",
+        "Gallego": "Gallego",
+        "Hindi": "Hindi",
+        "Inglés": "Inglés",
+        "Italiano": "Italiano",
+        "Mandarín": "Mandarín",
+        "Portugués": "Portugués",
+        "Ruso": "Ruso",
+        "Vasco": "Vasco"
     }
 }

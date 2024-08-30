@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   plugins: ['~/utils/utils.js'],
 
+
   devtools: { enabled: true },
   compatibilityDate: "2024-07-03",
   modules: [
@@ -9,12 +10,11 @@ export default defineNuxtConfig({
   ],
 
   devServer: {
+    host: '0.0.0.0', // Exposes the server to all network interfaces
+
     port: 8000
   },
-  server: {
-    host: '0.0.0.0', // Exposes the server to all network interfaces
-    port: 8000, // The port you want the server to run on
-  },
+
   i18n: {
     strategy: 'no_prefix',
     vueI18n: './i18n.config.ts',
@@ -47,7 +47,6 @@ export default defineNuxtConfig({
     }
   },
   css: ['~/assets/css/main.css',
-    '@fortawesome/fontawesome-svg-core/styles.css'
   ],
   postcss: {
     plugins: {
