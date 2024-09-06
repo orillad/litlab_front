@@ -1,6 +1,13 @@
 <!-- litlab_front/pages/form.vue -->
-<template>
-  <div class="max-w-2xl mx-auto p-4 text-center">
+<template >
+<div class="relative">
+  <img src="~/assets/images/maquina.png" alt="Màquina d'escriure" class="absolute left-0 transform w-1/3 sm:w-1/4 sm:top-96 top-96 md:w-1/3 md:top-96 lg:w-1/3 ">
+  <img src="~/assets/images/llibre.png" alt="Otra Imagen" class="absolute right-0 transform w-1/4 sm:w-1/4 sm:top-[70rem] top-[70rem] md:w-1/4 md:top-[70rem] lg:w-1/4">
+</div>
+
+  <div class="max-w-2xl mx-auto p-4 text-center relative ">
+    
+
     <form @submit.prevent="submitForm">
       <h1 class="text-5xl font-bold mb-8">{{ $t('form.step1Title') }}</h1>
       <h1 class="text-5xl font-bold mb-8">{{ $t('form.question1') }}</h1>
@@ -26,7 +33,7 @@
           <option value="10">10</option>
           <option value="20">20</option>
         </select>
-        <img class="pt-10" src="~/assets/images/down_arrow.svg" alt="">
+        <img class="pt-10" src="~/assets/images/down_arrow.png" alt="">
       </div>
 
       <h1 class="text-5xl font-bold mb-8">{{ $t('form.step2Title') }}</h1>
@@ -47,7 +54,7 @@
               <span class="m-auto text-2xl font-thin">−</span>
             </button>
             <input type="number"
-              class="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none focus:outline-none text-center w-full bg-secondary font-semibold text-md hover:text-black focus:text-black md:text-basecursor-default flex items-center text-gray-700 outline-none"
+              class="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none focus:outline-none text-center w-full bg-secondary rounded-none font-semibold text-md hover:text-black focus:text-black md:text-basecursor-default flex items-center text-gray-700 outline-none"
               name="custom-input-number" v-model="totalProtagonists" min="1" @input="updateProtagonists" />
 
             <button data-action="increment" @click.prevent="increment"
@@ -85,30 +92,30 @@
             </select>
           </div>
         </div>
-        <img class="pt-10" src="~/assets/images/down_arrow.svg" alt="">
+        <img class="pt-10" src="~/assets/images/down_arrow.png" alt="">
       </div>
 
-      <h1 class="text-5xl font-bold mb-8">{{ $t('form.step3Title') }}</h1>
-      <h1 class="text-5xl mb-8">{{ $t('form.summarizeStory') }}</h1>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">{{ $t('form.step3Title') }}</h1>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl mb-6">{{ $t('form.summarizeStory') }}</h1>
 
-      <div class="flex flex-col items-center space-y-4 mb-16">
+      <div class="flex flex-col items-center space-y-4 mb-8">
         <textarea v-model="summary" @input="countWords" :placeholder="$t('form.writeSummary')" rows="6"
           class="w-full max-w-2xl p-4 border rounded-lg bg-primary_button"></textarea>
         <div class="text-right text-sm text-gray-500 mb-4">
           {{ wordCount }} / 300 {{ $t('form.wordCount') }}
         </div>
-        <div class="flex items-center space-x-4 w-full max-w-2xl">
+        <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-x-4 w-full max-w-2xl">
           <input type="text" required v-model="title" :placeholder="$t('form.writeTitle')"
             class="flex-auto p-2 border rounded-full bg-primary_button" />
           <button type="button" @click="generateTitle"
-            class="bg-secondary text-black flex-auto px-4 py-2 rounded-full flex-shrink-0">
+            class="bg-secondary text-black flex-auto px-4 py-2 rounded-full">
             {{ $t('form.generateTitle') }}
           </button>
         </div>
       </div>
 
-      <div class="  flex justify-center items-center">
-        <div class="bg-secondary rounded-lg p-6 mb-2">
+      <div class="flex flex-col items-center space-y-4">
+        <div class="bg-secondary rounded-lg p-4 w-full max-w-sm">
           <label class="block text-primary text-sm font-bold mb-2" for="language">
             {{ $t('form.lang') }}
             <span class="inline-block ml-2">
@@ -116,7 +123,7 @@
             </span>
           </label>
           <select id="language" required v-model="selectedLanguage"
-            class="block  w-full border border-black bg-secondary text-primary py-2 px-3 pr-8 rounded leading-tight focus:outline-none focus:text-primary">
+            class="block w-full border border-black bg-secondary text-primary py-2 px-3 pr-8 rounded leading-tight focus:outline-none focus:text-primary">
             <option selected disabled>Choose here</option>
             <option value="arabic">{{ $t('lang.Árabe') }}</option>
             <option value="catalan">{{ $t('lang.Catalán') }}</option>
@@ -131,28 +138,18 @@
             <option value="russian">{{ $t('lang.Ruso') }}</option>
             <option value="basque">{{ $t('lang.Vasco') }}</option>
           </select>
-
-
         </div>
       </div>
 
-
-
-
-      <div class="flex justify-center items-center">
-
-
-
+      <div class="flex justify-center items-center mt-6">
         <button type="submit" class="bg-secondary text-black px-6 py-3 rounded-full flex items-center space-x-2">
           <span>{{ $t('form.generateBook') }}</span>
           <img src="~/assets/images/book.svg" alt="" class="h-6 w-6">
         </button>
 
-
         <!-- Spinner -->
         <div v-if="loading" class="spinner-overlay">
           <div class="spinner-container">
-
             <Book />
             <p class="spinner-text">{{ $t('form.chapter') }} {{ chapterNumberSpin }}/10</p>
           </div>
@@ -160,9 +157,6 @@
       </div>
     </form>
   </div>
-
-
-
 </template>
 
 <script setup>
@@ -192,11 +186,6 @@ const selectedLanguage = ref("sdfsdf")
 const wordCount = ref(0)
 const loading = ref(false)
 const chapterNumberSpin = ref(1)
-
-
-const displayedLanguage = computed(() => {
-  return selectedLanguage.value ? $t(`lang.${selectedLanguage.value}`) : 'Choose here';
-});
 
 
 
@@ -277,57 +266,42 @@ const generateImageForChapter = async (chapterText, chapterNumber) => {
   return imageUrl;
 }
 
-const generateEditImage = async (prompt, imagePath) => {
-  try {
-    // Log the image path to confirm it's passed correctly
-    console.log(imagePath);
+// const generateEditImage = async (prompt, imagePath) => {
+//   try {
+//     // Log the image path to confirm it's passed correctly
+//     console.log(imagePath);
 
-    // Call the API to get the edited image URL
-    const imageUrl = await edit(prompt, imagePath);
-    console.log(imageUrl);
+//     // Call the API to get the edited image URL
+//     const imageUrl = await edit(prompt, imagePath);
+//     console.log(imageUrl);
 
-    // Fetch the image from the returned URL with CORS mode
-    const response = await fetch(imageUrl, { mode: 'cors' });
+//     // Fetch the image from the returned URL with CORS mode
+//     const response = await fetch(imageUrl, { mode: 'cors' });
 
-    // Check if the fetch was successful
-    if (!response.ok) {
-      throw new Error(`Failed to fetch image: ${response.statusText}`);
-    }
+//     // Check if the fetch was successful
+//     if (!response.ok) {
+//       throw new Error(`Failed to fetch image: ${response.statusText}`);
+//     }
 
-    // Convert the response to a Blob
-    const imageBlob = await response.blob();
-    console.log(response);
-    console.log(imageBlob);
+//     // Convert the response to a Blob
+//     const imageBlob = await response.blob();
+//     console.log(response);
+//     console.log(imageBlob);
 
-    // Convert the Blob to an object URL
-    const imageObjectURL = URL.createObjectURL(imageBlob);
+//     // Convert the Blob to an object URL
+//     const imageObjectURL = URL.createObjectURL(imageBlob);
 
-    // Return the object URL for further use
-    return imageObjectURL;
-  } catch (error) {
-    console.error('Error generating edited image:', error);
-    // Handle errors appropriately (e.g., return a fallback value or throw the error)
-    throw error;
-  }
-}
+//     // Return the object URL for further use
+//     return imageObjectURL;
+//   } catch (error) {
+//     console.error('Error generating edited image:', error);
+//     // Handle errors appropriately (e.g., return a fallback value or throw the error)
+//     throw error;
+//   }
+// }
 
 
-const loadImageToCanvas = async (url) => {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.crossOrigin = 'Anonymous';
-    img.onload = function () {
-      const canvas = document.createElement('canvas');
-      canvas.width = img.width;
-      canvas.height = img.height;
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0);
-      resolve(canvas.toDataURL('image/png'));
-    };
-    img.onerror = reject;
-    img.src = url;
-  });
-}
+
 
 
 const generateChapter = async (chapterNumber) => {
@@ -345,73 +319,12 @@ const generateChapter = async (chapterNumber) => {
 
 
 
-
-const generatePDF = async (chapters) => {
-  const doc = new jsPDF('p', 'mm', 'a4');
-
-  const filePath = path.join(baseDir, `${title || 'story'}.pdf`);
-  doc.pipe(fs.createWriteStream(filePath));
-  const pageHeight = doc.internal.pageSize.height;
-  const pageWidth = doc.internal.pageSize.width;
-  const margin = 20;
-  const lineHeight = 10;
-  const titleFontSize = 20;
-  const chapterFontSize = 16;
-  const textFontSize = 12;
-
-  let y = margin;
-
-  // doc.addFileToVFS("NotoSans.ttf", NotoSans);
-  // doc.addFont("NotoSans.ttf", "NotoSans", "normal");
-  // doc.setFont("NotoSans", "normal");
-  // Portada
-  doc.setFontSize(titleFontSize);
-  doc.text(title.value, pageWidth / 2, pageHeight / 2, { align: 'center' });
-  doc.addPage();
-
-  // Contenido
-  for (const [index, chapter] of chapters.entries()) {
-    doc.setFontSize(chapterFontSize);
-    y += lineHeight * 2;
-
-    // Insertar imagen del capítulo
-    if (chapter.imageUrl) {
-      const base64Image = await loadImageToCanvas(chapter.imageUrl);
-      doc.addImage(base64Image, 'PNG', margin, y, pageWidth - margin * 2, 100);
-      y += 110;  // Ajustar según el tamaño de la imagen
-    }
-
-    doc.setFontSize(textFontSize);
-    const splitStory = doc.splitTextToSize(chapter.text, pageWidth - margin * 2);
-
-    for (const line of splitStory) {
-      if (y + lineHeight > pageHeight - margin) {
-        doc.addPage();
-        y = margin;
-      }
-      doc.text(line, margin, y);
-      y += lineHeight;
-    }
-
-    if (index < chapters.length - 1) {
-      doc.addPage();
-      y = margin;
-    }
-  }
-
-  doc.end();
-  res.json({ success: true, bookId: title || 'story' });
-
-}
-
-
-
 const submitForm = async () => {
   loading.value = true;
 
   try {
     const chapters = [];
-    const chapterNumbers = 1;
+    const chapterNumbers = 2;
     for (let i = 1; i <= chapterNumbers; i++) {
       const chapter = await generateChapter(i);
       chapters.push(chapter);
@@ -422,7 +335,10 @@ const submitForm = async () => {
 
     // Enviar la data del libro al backend para generar el libro y guardar temporalmente
     const response = await generateBook(title.value, chapters);
+    
     console.log(response);
+    localStorage.setItem ('jwt', response.token) 
+
 
 
     if (response.success) {
@@ -449,7 +365,9 @@ function increment() {
   updateProtagonists();
 }
 
-
+definePageMeta({
+    layout: 'default',
+  });
 
 
 </script>

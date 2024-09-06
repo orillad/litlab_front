@@ -21,9 +21,11 @@
     "language-list": "^0.0.3",
     "nuxt": "^3.12.3",
     "path": "^0.12.7",
+    "pdfjs-dist": "^4.6.82",
     "primevue": "^4.0.4",
     "provinces": "^1.11.0",
-    "vue": "latest"
+    "vue": "latest",
+    "vue-pdf": "^4.3.0"
   },
   "devDependencies": {
     "@primevue/nuxt-module": "^4.0.4",

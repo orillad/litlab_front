@@ -88,5 +88,12 @@
         "Portugués": "Portuguès",
         "Ruso": "Rus",
         "Vasco": "Basc"
-    }
+    },
+
+    "login": {
+        "title": "Inicia sessió a l'administració",
+        "email": "Correu electrònic",
+        "password": "Contrasenya",
+        "submit": "Iniciar sessió"
+      }
 }

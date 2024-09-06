@@ -87,5 +87,11 @@
     "Portugués": "Portuguese",
     "Ruso": "Russian",
     "Vasco": "Basque"
-    }
+    },
+    "login": {
+    "title": "Login to Admin Panel",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Log in"
+  }
 }

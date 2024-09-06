@@ -86,5 +86,14 @@
         "Portugués": "Portugués",
         "Ruso": "Ruso",
         "Vasco": "Vasco"
-    }
+    },
+    
+  "login": {
+    "title": "Iniciar sesión en el panel de administración",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "submit": "Iniciar sesión"
+  }
+
+
 }
