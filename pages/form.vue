@@ -104,7 +104,8 @@
         <div class="text-right text-sm text-gray-500 mb-4">
           {{ wordCount }} / 300 {{ $t('form.wordCount') }}
         </div>
-        <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-x-4 w-full max-w-2xl">
+        
+        <div class="flex flex-col sm:flex-row items-center sm:space-x-4 w-full max-w-2xl">
           <input type="text" required v-model="title" :placeholder="$t('form.writeTitle')"
             class="flex-auto p-2 border rounded-full bg-primary_button" />
           <button type="button" @click="generateTitle"
@@ -324,7 +325,7 @@ const submitForm = async () => {
 
   try {
     const chapters = [];
-    const chapterNumbers = 2;
+    const chapterNumbers = 1;
     for (let i = 1; i <= chapterNumbers; i++) {
       const chapter = await generateChapter(i);
       chapters.push(chapter);
@@ -334,7 +335,7 @@ const submitForm = async () => {
     loading.value = false;
 
     // Enviar la data del libro al backend para generar el libro y guardar temporalmente
-    const response = await generateBook(title.value, chapters);
+    const response = await generateBook(title.value, chapters, selectedLanguage.value);
     
     console.log(response);
     localStorage.setItem ('jwt', response.token) 

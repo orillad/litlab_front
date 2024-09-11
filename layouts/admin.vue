@@ -47,6 +47,7 @@
         </div>
         <button
           class="px-4 py-2 bg-blue-600 text-white font-bold rounded hover:bg-blue-700"
+          @click="logout"
         >
           Logout
         </button>
@@ -60,8 +61,21 @@
   </div>
 </template>
 
+<script setup>
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+function logout() {
+  // Eliminar el JWT de localStorage
+  localStorage.removeItem('token')
+
+  // Redirigir al usuario a la página de login
+  router.push('/login')
+}
+</script>
+
 <style scoped>
-/* Asegúrate de que el texto no esté en blanco si no se quiere */
 .text-black {
   color: black;
 }

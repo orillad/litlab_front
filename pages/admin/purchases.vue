@@ -128,7 +128,8 @@ const filteredPurchases = computed(() => {
   const fromDate = filters.value.fromDate ? new Date(filters.value.fromDate) : null;
   const toDate = filters.value.toDate ? new Date(filters.value.toDate) : null;
 
-  return purchases.value.filter(purchase => {
+  // Filter purchases
+  const filtered = purchases.value.filter(purchase => {
     const matchesFirstName = purchase.customer ? purchase.customer.first_name.toLowerCase().includes(filters.value.firstName.toLowerCase()) : true;
     const matchesLastName = purchase.customer ? purchase.customer.last_name.toLowerCase().includes(filters.value.lastName.toLowerCase()) : true;
     const matchesEmail = purchase.customer ? purchase.customer.email.toLowerCase().includes(filters.value.email.toLowerCase()) : true;
@@ -138,7 +139,11 @@ const filteredPurchases = computed(() => {
 
     return matchesFirstName && matchesLastName && matchesEmail && matchesDateRange;
   });
+
+  // Sort by purchase_date in descending order
+  return filtered.sort((a, b) => new Date(b.purchase_date) - new Date(a.purchase_date));
 });
+
 
 const filteredAndPaginatedPurchases = computed(() => {
   const start = (currentPage.value - 1) * pageSize;
@@ -166,7 +171,8 @@ onMounted(() => {
 });
 
 definePageMeta({
-  layout: 'admin', // Define the admin layout
+  layout: 'admin',
+  middleware: 'admin'
 });
 </script>
 

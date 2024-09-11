@@ -1,13 +1,14 @@
 // litlab_front/api/generate.js
 import axios from '~/api/axios'; // Ensure this path is correct
 
-const generateBook = async (title, chapters) => {
+const generateBook = async (title, chapters, lang) => {
     try {
         console.log('Title:', title); // Verify title.value is correct
 
         const response = await axios.post('/book/generate-book', {
             title, // Ensure title is a string
-            chapters
+            chapters,
+            lang
         });
 
         if (response.data.success) {

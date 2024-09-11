@@ -96,7 +96,8 @@ onMounted(() => {
 });
 
 definePageMeta({
-  layout: 'admin', // Define the admin layout
+  layout: 'admin',
+  middleware: 'admin'
 });
 </script>
 

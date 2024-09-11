@@ -3,7 +3,6 @@
 export default defineNuxtConfig({
   plugins: ['~/utils/utils.js'],
 
-
   devtools: { enabled: true },
   compatibilityDate: "2024-07-03",
   modules: [

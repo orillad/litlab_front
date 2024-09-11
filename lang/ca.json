@@ -10,8 +10,14 @@
         "create": "Crea el meu",
         "bookNow": "llibre ara",
         "what": "Què",
-        "do": "fem?"
-    },
+        "do": "fem?",
+        "create_book": "Crearem el teu llibre,",
+    "with": "amb",
+    "history": "històries i",
+    "ilustration": "il·lustracions.",
+    "alucinar": "VOLDRÀS AL·LUCINAR?",
+    "description": "El teu fill o filla aprendrà el que vulguis mentre llegeix. Gràcies a la tecnologia hem pogut desenvolupar una plataforma mitjançant intel·ligència artificial que et permet crear al teu gust el llibre perfecte per a tu i el teu fill o filla amb els protagonistes que vulguis, amb els noms desitjats i amb les il·lustracions desitjades. Com si fos màgia, et brindem la millor experiència per a la lectura i il·lusió del teu fill o filla."
+  },
     "privacyPolicy": {
         "title": "Política de Privacitat",
         "lastUpdated": "Data d'última actualització: 19/09/2023",

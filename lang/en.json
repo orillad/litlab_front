@@ -10,7 +10,13 @@
         "create": "Create my",
         "bookNow": "book now",
         "what": "What",
-        "do": "do we do?"
+        "do": "do we do?",
+        "create_book": "We will create your book,",
+    "with": "with",
+    "history": "stories and",
+    "ilustration": "illustrations.",
+    "alucinar": "WANT TO BE AMAZED?",
+    "description": "Your child will learn whatever you wish while reading. Thanks to technology, we have developed a platform using artificial intelligence that allows you to create the perfect book for you and your child, with the desired protagonists, names, and illustrations. It's like magic! We offer you the best experience for your child's reading and imagination."
     },
     "privacyPolicy": {
         "title": "Privacy Policy",
@@ -93,5 +99,20 @@
     "email": "Email",
     "password": "Password",
     "submit": "Log in"
+  },
+  "aboutUs": {
+    "title": "About Us",
+    "description": "We are a creative company focused on delivering personalized experiences through AI-driven technology.",
+    "missionTitle": "Our Mission",
+    "missionContent": "To empower imagination by creating unique, personalized books with the help of AI.",
+    "visionTitle": "Our Vision",
+    "visionContent": "To revolutionize the way stories are created and consumed, making each one unique and memorable.",
+    "teamTitle": "Meet Our Team",
+    "teamDescription": "We are a passionate team dedicated to making your ideas come to life.",
+    "member1": {
+      "name": "John Doe",
+      "role": "Founder & CEO",
+      "bio": "With a background in technology and storytelling, John leads the team with a vision to innovate."
+    }
   }
 }

@@ -10,7 +10,13 @@
         "create": "Crea el mío",
         "bookNow": "libro ahora",
         "what": "¿Qué",
-        "do": "hacemos?"
+        "do": "hacemos?",
+        "create_book": "Crearemos tu libro,",
+        "with": "con",
+        "history": "historias e",
+        "ilustration": "ilustraciones.",
+        "alucinar": "¿QUIERES ALUCINAR?",
+        "description": "Tu hijo o hija aprenderá lo que desees mientras lee. Gracias a la tecnología hemos podido desarrollar una plataforma mediante inteligencia artificial que te permite crear al gusto el libro perfecto para ti y tu hijo o hija con los protagonistas que se deseen, con los nombres deseados y con las ilustraciones deseadas, como si de magia se tratara, te brindamos la mejor experiencia para la lectura e ilusión de tu hijo o hija."
     },
     "privacyPolicy": {
         "title": "Política de Privacidad",
@@ -43,12 +49,12 @@
         "contactTitle": "Contacto",
         "contactMessage": "Si tienes alguna pregunta o inquietud sobre esta Política de Privacidad, por favor contáctanos a través de"
     },
-    "header":{
+    "header": {
         "home": "Inicio",
         "products": "Prodcutos",
         "us": "Nosotros"
     },
-    "form":{
+    "form": {
         "step1Title": "1.",
         "question1": "¿De qué temática es tu libro?",
         "isChildrensBook": "¿Es un libro infantil?",
@@ -87,13 +93,10 @@
         "Ruso": "Ruso",
         "Vasco": "Vasco"
     },
-    
-  "login": {
-    "title": "Iniciar sesión en el panel de administración",
-    "email": "Correo electrónico",
-    "password": "Contraseña",
-    "submit": "Iniciar sesión"
-  }
-
-
+    "login": {
+        "title": "Iniciar sesión en el panel de administración",
+        "email": "Correo electrónico",
+        "password": "Contraseña",
+        "submit": "Iniciar sesión"
+    }
 }
