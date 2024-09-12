@@ -28,10 +28,9 @@
       <a href='javascript:void(0)'
         class='hover:text-secondary text-white max-lg:text-primary font-light block text-[15px]'>{{ $t('header.us') }}</a>
     </li>
-    <li class='max-lg:border-b max-lg:py-3 px-3 text-center'>
-      <a href='javascript:void(0)'>
-        <img src="~/assets/images/carrito.svg" alt="logo" class="w-6 h-6 svg-fill">
-      </a>
+    <li class='mb-6 hidden max-lg:block text-center'>
+      <!-- <a href="javascript:void(0)"><img src="https://readymadeui.com/readymadeui.svg" alt="logo"
+          class='w-40' /></a> -->
     </li>
           </ul>
         </div>

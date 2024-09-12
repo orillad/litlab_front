@@ -98,5 +98,11 @@
         "email": "Correo electrónico",
         "password": "Contraseña",
         "submit": "Iniciar sesión"
-    }
+    },
+        "notFound": {
+          "title": "Página No Encontrada",
+          "message": "Parece que la página que estás buscando no existe.",
+          "goHome": "Volver a la Página de Inicio"
+        }
+      
 }

@@ -101,5 +101,11 @@
         "email": "Correu electrònic",
         "password": "Contrasenya",
         "submit": "Iniciar sessió"
-      }
+      },
+        "notFound": {
+          "title": "Pàgina no trobada",
+          "message": "Sembla que la pàgina que estàs buscant no existeix.",
+          "goHome": "Torna a la pàgina d'inici"
+        }
+      
 }

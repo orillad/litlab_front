@@ -3,7 +3,7 @@
 export default defineNuxtConfig({
   plugins: ['~/utils/utils.js'],
 
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   compatibilityDate: "2024-07-03",
   modules: [
     '@nuxtjs/i18n',
@@ -38,6 +38,28 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: "Litlab",
+      meta: [
+        {
+          name: 'description',
+          content: 'Crea libros personalizados con nuestra plataforma de IA. Sube imágenes de tus personajes, define nombres y la trama. Genera un libro único con ilustraciones que cobran vida para tu hijo o cualquier lector. Disfruta de la mejor experiencia educativa y creativa.'
+        },
+        {
+          name: 'keywords',
+          content: 'IA, libros personalizados, creación de historias, ilustraciones personalizadas, educación infantil, tecnología en la lectura'
+        },
+        { property: 'og:title', content: 'Crea tu historia personalizada con IA' },
+        {
+          property: 'og:description',
+          content: 'Nuestro sistema de inteligencia artificial te permite crear libros únicos para tus hijos, con protagonistas, nombres e ilustraciones que tú mismo defines. ¡Como magia!'
+        },
+        { property: 'og:image', content: 'https://tusitio.com/images/your-image.png' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: 'Crea tu libro personalizado ahora' },
+        {
+          name: 'twitter:description',
+          content: 'Genera libros con IA, selecciona personajes, nombres e historias personalizadas. ¡Da vida a la imaginación de tu hijo!'
+        }
+      ],
       link: [
         {
           rel: 'stylesheet',

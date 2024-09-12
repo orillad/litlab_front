@@ -100,19 +100,12 @@
     "password": "Password",
     "submit": "Log in"
   },
-  "aboutUs": {
-    "title": "About Us",
-    "description": "We are a creative company focused on delivering personalized experiences through AI-driven technology.",
-    "missionTitle": "Our Mission",
-    "missionContent": "To empower imagination by creating unique, personalized books with the help of AI.",
-    "visionTitle": "Our Vision",
-    "visionContent": "To revolutionize the way stories are created and consumed, making each one unique and memorable.",
-    "teamTitle": "Meet Our Team",
-    "teamDescription": "We are a passionate team dedicated to making your ideas come to life.",
-    "member1": {
-      "name": "John Doe",
-      "role": "Founder & CEO",
-      "bio": "With a background in technology and storytelling, John leads the team with a vision to innovate."
+  
+    "notFound": {
+      "title": "Page Not Found",
+      "message": "It looks like the page you’re looking for does not exist.",
+      "goHome": "Go to Home Page"
     }
-  }
+  
+  
 }
