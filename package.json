@@ -12,7 +12,7 @@
   "dependencies": {
     "@nuxtjs/i18n": "^8.3.1",
     "@primevue/themes": "^4.0.4",
-    "@stripe/stripe-js": "^4.1.0",
+    "@stripe/stripe-js": "^4.4.0",
     "@supabase/supabase-js": "^2.45.2",
     "axios": "^1.7.2",
     "country-state-city": "^3.2.1",
@@ -25,7 +25,7 @@
     "primevue": "^4.0.4",
     "provinces": "^1.11.0",
     "vue": "latest",
-    "vue-pdf": "^4.3.0"
+    "vue-pdf": "^1.0.0"
   },
   "devDependencies": {
     "@primevue/nuxt-module": "^4.0.4",
