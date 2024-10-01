@@ -25,6 +25,7 @@
           <th class="text-left p-2">Postal Code</th>
           <th class="text-left p-2">Shipping Address</th>
           <th class="text-left p-2">Purchase Date</th>
+          <th class="text-left p-2">State</th>
           <th class="text-left p-2">Actions</th>
         </tr>
       </thead>
@@ -41,8 +42,9 @@
           <td class="p-2">{{ purchase.customer ? purchase.customer.postal_code : 'Loading...' }}</td>
           <td class="p-2">{{ purchase.customer ? purchase.customer.shipping_address : 'Loading...' }}</td>
           <td class="p-2">{{ purchase.purchase_date }}</td>
+          <td class="p-2">{{ purchase.payment_state }}</td>
           <td class="p-2">
-            <button @click="viewPurchasePdf(purchase.pdf_id)" class="text-green-500 hover:text-green-700 text-xs">View PDF</button>
+            <button @click="viewPurchasePdf(purchase.book_id)" class="text-green-500 hover:text-green-700 text-xs">View PDF</button>
             <button @click="deletePurchaseById(purchase.id)" class="ml-2 text-red-500 hover:text-red-700 text-xs">Delete</button>
           </td>
         </tr>
@@ -66,7 +68,7 @@ import { ref, computed, onMounted } from 'vue';
 import { getPurchases, deletePurchase, getPdfByPurchase } from '~/api/purchases';
 import { findCustomerById } from '~/api/customers';
 import downloadBook from '~/api/download';
-import { getPdfById } from '~/api/pdfs';
+import { getBookById } from '~/api/books';
 
 const purchases = ref([]);
 const filters = ref({
@@ -84,6 +86,8 @@ const loadPurchases = async () => {
   try {
     purchases.value = await getPurchases();
     await loadCustomerDetails();
+    console.log(purchases.value);
+    
   } catch (error) {
     console.error('Failed to load purchases:', error);
   }
@@ -91,11 +95,15 @@ const loadPurchases = async () => {
 
 // Load customer details for cada compra
 const loadCustomerDetails = async () => {
+  
   for (let purchase of purchases.value) {
+    
     if (!purchase.customer) {
+      console.log(purchase.customer_id);
       try {
         const data = await findCustomerById(purchase.customer_id);
-        purchase.customer = data.customer[0];
+        
+        purchase.customer = data.customer;
       } catch (error) {
         console.error('Failed to load customer details:', error);
       }
@@ -115,9 +123,11 @@ const deletePurchaseById = async (id) => {
 // View the PDF of a purchase
 const viewPurchasePdf = async (pdfId) => {
   try {
-    const bookid = await getPdfById(pdfId);
-    console.log(bookid.title);
-    downloadBook(bookid.title);
+    console.log(pdfId);
+    
+    const bookid = await getBookById(pdfId);
+    console.log(bookid.pdf.book_name);
+    downloadBook(bookid.pdf.book_name);
   } catch (error) {
     console.error('Failed to load PDF:', error);
   }

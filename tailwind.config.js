@@ -18,6 +18,9 @@ export default {
         secondary_active: ' #FEE2E1'
       },
     },
+    fontFamily: {
+      montserrat: ['Montserrat', 'sans-serif'],
+    },
   },
   plugins: [],
 }

@@ -77,21 +77,23 @@
         "generateBook": "GENERAR LIBRO",
         "generatingBook": "Generando el libro...",
         "chapter": "Capítulo",
-        "lang": "Idioma del libro."
+        "lang": "Idioma del libro.",
+        "writeName": "Nombre del personaje"
+
     },
     "lang": {
-        "Árabe": "Árabe",
-        "Catalán": "Catalán",
-        "Español": "Español",
-        "Francés": "Francés",
-        "Gallego": "Gallego",
+        "Arabic": "Árabe",
+        "Catalan": "Catalán",
+        "Spanish": "Español",
+        "French": "Francés",
+        "Galician": "Gallego",
         "Hindi": "Hindi",
-        "Inglés": "Inglés",
-        "Italiano": "Italiano",
-        "Mandarín": "Mandarín",
-        "Portugués": "Portugués",
-        "Ruso": "Ruso",
-        "Vasco": "Vasco"
+        "English": "Inglés",
+        "Italian": "Italiano",
+        "Mandarin": "Mandarín",
+        "Portuguese": "Portugués",
+        "Russian": "Ruso",
+        "Basque": "Vasco"
     },
     "login": {
         "title": "Iniciar sesión en el panel de administración",

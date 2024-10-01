@@ -25,7 +25,9 @@
     "primevue": "^4.0.4",
     "provinces": "^1.11.0",
     "vue": "latest",
-    "vue-pdf": "^1.0.0"
+    "vue-pdf": "^1.0.0",
+    "vue-router": "^4.4.4",
+    "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
     "@primevue/nuxt-module": "^4.0.4",

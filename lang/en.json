@@ -12,11 +12,11 @@
         "what": "What",
         "do": "do we do?",
         "create_book": "We will create your book,",
-    "with": "with",
-    "history": "stories and",
-    "ilustration": "illustrations.",
-    "alucinar": "WANT TO BE AMAZED?",
-    "description": "Your child will learn whatever you wish while reading. Thanks to technology, we have developed a platform using artificial intelligence that allows you to create the perfect book for you and your child, with the desired protagonists, names, and illustrations. It's like magic! We offer you the best experience for your child's reading and imagination."
+        "with": "with",
+        "history": "stories and",
+        "ilustration": "illustrations.",
+        "alucinar": "WANT TO BE AMAZED?",
+        "description": "Your child will learn whatever you wish while reading. Thanks to technology, we have developed a platform using artificial intelligence that allows you to create the perfect book for you and your child, with the desired protagonists, names, and illustrations. It's like magic! We offer you the best experience for your child's reading and imagination."
     },
     "privacyPolicy": {
         "title": "Privacy Policy",
@@ -49,18 +49,19 @@
         "contactTitle": "Contact",
         "contactMessage": "If you have any questions or concerns about this Privacy Policy, please contact us at"
     },
-    "header":{
+    "header": {
         "home": "Home",
         "products": "Products",
         "us": "About Us"
     },
-    "form":{
+    "form": {
         "step1Title": "1.",
         "question1": "What is the theme of your book?",
         "isChildrensBook": "Is it a children's book?",
         "yes": "Yes",
         "no": "No",
         "units": "How many units do you want?",
+        "langWant": "What language would you like to read in?",
         "step2Title": "2.",
         "bookNeedsProtagonist": "Every book needs its protagonist.",
         "totalCharacters": "How many characters will your book have in total?",
@@ -77,35 +78,32 @@
         "generateBook": "GENERATE BOOK",
         "generatingBook": "Generating the book...",
         "chapter": "Chapter",
-        "lang": "Language of the book."
-
+        "lang": "Language of the book.",
+        "writeName": "Name of the character"
     },
-    "lang":{
-        "Árabe": "Arabic",
-    "Catalán": "Catalan",
-    "Español": "Spanish",
-    "Francés": "French",
-    "Gallego": "Galician",
-    "Hindi": "Hindi",
-    "Inglés": "English",
-    "Italiano": "Italian",
-    "Mandarín": "Mandarin",
-    "Portugués": "Portuguese",
-    "Ruso": "Russian",
-    "Vasco": "Basque"
+    "lang": {
+        "Arabic": "Arabic",
+        "Catalan": "Catalan",
+        "Spanish": "Spanish",
+        "French": "French",
+        "Galician": "Galician",
+        "Hindi": "Hindi",
+        "English": "English",
+        "Italian": "Italian",
+        "Mandarin": "Mandarin",
+        "Portuguese": "Portuguese",
+        "Russian": "Russian",
+        "Basque": "Basque"
     },
     "login": {
-    "title": "Login to Admin Panel",
-    "email": "Email",
-    "password": "Password",
-    "submit": "Log in"
-  },
-  
+        "title": "Login to Admin Panel",
+        "email": "Email",
+        "password": "Password",
+        "submit": "Log in"
+    },
     "notFound": {
-      "title": "Page Not Found",
-      "message": "It looks like the page you’re looking for does not exist.",
-      "goHome": "Go to Home Page"
+        "title": "Page Not Found",
+        "message": "It looks like the page you’re looking for does not exist.",
+        "goHome": "Go to Home Page"
     }
-  
-  
 }

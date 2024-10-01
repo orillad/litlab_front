@@ -80,12 +80,19 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import processPayment from '~/api/payment.js';
+import processBook from '~/api/process-book.js';
 import downloadBook from '~/api/download.js'; // Importa la función de descarga
 import axios from '~/api/axios';
 import validatePaymentAccess from '~/api/validatePaymentAccess';
+import checkout from '~/api/checkout';
+import { getPurchasesById } from '~/api/purchases';
 const route = useRoute();
-const bookId = route.query.bookId; // Extrae el bookId de la URL
+const bookName = route.query.bookName; // Extrae el bookId de la URL
+
+
+const currentUrl = route.fullPath
+
+console.log(currentUrl);
 
 const firstName = ref('');
 const lastName = ref('');
@@ -97,22 +104,27 @@ const postalCode = ref('');
 const address = ref('');
 
 
+const price = 10;
+
 
 const isValidAcces = ref(false);
 
 const validateAccess = async () => {
-  const params = new URLSearchParams(window.location.search);
-  const bookId = params.get('bookId');
+
   const token = localStorage.getItem('jwt');
 
-  if (!bookId || !token) {
-    // Redirigir si no hay bookId o token
+  if (!bookName || !token) {
+    // Redirigir si no hay bookName o token
+    console.log(token);
+
     window.location.href = '/form'; // Redirige a una página de error
     return;
   }
 
   try {
-    const isValid = await validatePaymentAccess(bookId, token);
+    console.log("name in payment", bookName);
+
+    const isValid = await validatePaymentAccess(bookName, token);
     console.log("validing acces", isValid);
 
     if (isValid) {
@@ -127,9 +139,26 @@ const validateAccess = async () => {
     window.location.href = '/error'; // Redirige en caso de error
   }
 };
-onMounted(() => {
+onMounted(async () => {
+
+  if (route.query.payment === 'true' && checkPayment(route.query.purchaseId)) {
+
+    await downloadBook(bookName); 
+    localStorage.removeItem('jwt'); 
+
+    window.location.href = '/';
+
+  }
   validateAccess();
 });
+
+
+const checkPayment = async (purchaseId) => {
+  const result = await getPurchasesById(purchaseId);
+  return result.payment_state == 'payment_done'
+}
+
+
 
 const handleSubmit = async () => {
   try {
@@ -145,30 +174,31 @@ const handleSubmit = async () => {
     };
 
     console.log("Processing payment...");
-    const result = await processPayment(bookId, customerInfo); // Usa el bookId de la URL
 
+    const result = await processBook(bookName, customerInfo);
     console.log(result);
 
     if (result.success) {
-      // Llama a la función de descarga después de un pago exitoso
-      await downloadBook(bookId); // Usa el bookId de la URL
-      localStorage.removeItem('jwt'); // o sessionStorage.removeItem('jwt') si estás usando sessionStorage
 
-      // Redirige a la página de inicio
-      window.location.href = '/'; 
+      const payment = await checkout(price, currentUrl, result.purchaseId);
+
+
     } else {
+      // Si falla el procesamiento del pago, muestra un mensaje de error
       console.error(result.message);
-      // Muestra un mensaje de error al usuario
       document.getElementById('card-errors').innerText = result.message;
     }
+
+    etElementById('card-errors').innerText = 'El pago no se completó correctamente.';
+
   } catch (error) {
     console.error('Error processing payment:', error);
-    // Muestra un mensaje de error
+    // Muestra un mensaje de error genérico en caso de fallo en la llamada
     document.getElementById('card-errors').innerText = 'Ocurrió un error durante el procesamiento del pago.';
   }
 };
+
 </script>
 
 <style scoped>
-/* Añadir estilos aquí si es necesario */
 </style>

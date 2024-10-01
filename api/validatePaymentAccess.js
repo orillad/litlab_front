@@ -2,9 +2,9 @@
 
 import axios from '~/api/axios'; // Asegúrate de que esta ruta sea correcta
 
-const validatePaymentAccess = async (bookId, token) => {
+const validatePaymentAccess = async (bookName, token) => {
     try {
-        const response = await axios.post('/api/validate-payment-access', { bookId, token });
+        const response = await axios.post('/api/validate-payment-access', { bookName, token });
         console.log(response);
         
         return response.data;

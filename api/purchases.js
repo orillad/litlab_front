@@ -34,6 +34,17 @@ export const getPurchasesByCustomer = async (customerId) => {
     }
 };
 
+//  todas las compras de un cliente
+export const getPurchasesById = async (purchaseId) => {
+    try {
+        const response = await axios.get(`/api/purchases/${purchaseId}`);
+        return response.data;
+    } catch (e) {
+        console.error('Error fetching purchases:', e);
+        throw e;
+    }
+};
+
 // Obtener un PDF asociado a una compra
 export const getPdfByPurchase = async (pdf_id) => {
     try {

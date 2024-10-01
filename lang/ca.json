@@ -77,23 +77,25 @@
         "generateBook": "GENERAR LLIBRE",
         "generatingBook": "Generant el llibre...",
         "chapter": "Capítol",
-        "lang": "Llengua del llibre."
+        "lang": "Llengua del llibre.",
+        "writeName": "Nom del personaje"
+
         
     },
 
     "lang":{
-        "Árabe": "Àrab",
-        "Catalán": "Català",
-        "Español": "Espanyol",
-        "Francés": "Francès",
-        "Gallego": "Gallec",
+        "Arabic": "Àrab",
+        "Catalan": "Català",
+        "Spanish": "Espanyol",
+        "French": "Francès",
+        "Galician": "Gallec",
         "Hindi": "Hindi",
-        "Inglés": "Anglès",
-        "Italiano": "Italià",
-        "Mandarín": "Mandarí",
-        "Portugués": "Portuguès",
-        "Ruso": "Rus",
-        "Vasco": "Basc"
+        "English": "Anglès",
+        "Italian": "Italià",
+        "Mandarin": "Mandarí",
+        "Portuguese": "Portuguès",
+        "Russian": "Rus",
+        "Basque": "Basc"
     },
 
     "login": {

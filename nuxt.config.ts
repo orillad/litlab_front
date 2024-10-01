@@ -1,13 +1,10 @@
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   plugins: ['~/utils/utils.js'],
 
   devtools: { enabled: false },
   compatibilityDate: "2024-07-03",
-  modules: [
-    '@nuxtjs/i18n',
-  ],
+  modules: ['@nuxtjs/i18n'],
 
   devServer: {
     host: '0.0.0.0', // Exposes the server to all network interfaces

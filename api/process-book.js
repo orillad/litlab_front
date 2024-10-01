@@ -4,9 +4,10 @@ import axios from '~/api/axios'; // Asegúrate de que esta ruta sea correcta
 
 const processPayment = async (bookId, customerInfo) => {
     try {
-        const response = await axios.post('/book/process-payment', {
+        const response = await axios.post('/book/process-book', {
             bookId,
             customerInfo,
+
         });
         console.log("respone:", response.data);
         

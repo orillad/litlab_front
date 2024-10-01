@@ -5,8 +5,11 @@ export const loginAdmin = async (email, password) => {
     console.log("resr");
 
     try {
+        console.log("email", email);
+        console.log("passweord", password);
+        
         const response = await axios.post('/auth/login', { email, password });
-        console.log(response.data);
+        console.log("response", response.data);
 
         return response.data.token; // Devuelve el token JWT
     } catch (error) {
