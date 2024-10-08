@@ -105,5 +105,25 @@
         "title": "Page Not Found",
         "message": "It looks like the page you’re looking for does not exist.",
         "goHome": "Go to Home Page"
+    },
+    "error": {
+        "titleGeneration": "Error generating title. Please try again later.",
+        "emptySummary": "Please provide a summary before generating a title."
+    },
+    "payment": {
+        "title": "You're almost there to get the book of your dreams!",
+        "shippingAddress": "Shipping Address",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email",
+        "phone": "Mobile Phone",
+        "country": "Country",
+        "state": "State",
+        "postalCode": "Postal Code",
+        "address": "Shipping Address",
+        "submitButton": "Pay for your book",
+        "paymentSummary": "Payment Summary",
+        "product": "Product:",
+        "total": "Total:"
     }
 }

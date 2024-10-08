@@ -6,11 +6,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-07-03",
   modules: ['@nuxtjs/i18n'],
 
-  devServer: {
-    host: '0.0.0.0', // Exposes the server to all network interfaces
 
-    port: 8000
-  },
 
   i18n: {
     strategy: 'no_prefix',

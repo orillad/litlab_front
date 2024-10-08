@@ -9,19 +9,25 @@ const downloadBook = async (bookId) => {
             responseType: 'blob', // Esto es importante para manejar archivos
         });
 
-        // Crea un enlace para descargar el archivo
-        const url = window.URL.createObjectURL(new Blob([response.data]));
-        const link = document.createElement('a');
-        link.href = url;
-        link.setAttribute('download', `${bookId}.pdf`); // Nombre del archivo descargado
+        const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+        if (isSafari) {
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+            window.location.href = url;
+        } else {
+            // Crea un enlace para descargar el archivo
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', `${bookId}.pdf`); // Nombre del archivo descargado
 
-        // Simula un clic en el enlace para iniciar la descarga
-        document.body.appendChild(link);
-        link.click();
+            // Simula un clic en el enlace para iniciar la descarga
+            document.body.appendChild(link);
+            link.click();
 
-        // Limpia el enlace y el objeto URL
-        link.remove();
-        window.URL.revokeObjectURL(url);
+            // Limpia el enlace y el objeto URL
+            link.remove();
+            window.URL.revokeObjectURL(url);
+        }
     } catch (error) {
         console.error('Error downloading book:', error);
         throw error;

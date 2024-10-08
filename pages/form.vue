@@ -136,21 +136,29 @@
       <h1 class="text-3xl sm:text-4xl md:text-5xl mb-6">{{ $t('form.summarizeStory') }}</h1>
 
       <div class="flex flex-col items-center space-y-4 mb-8">
-        <textarea v-model="summary" @input="countWords" :placeholder="$t('form.writeSummary')" rows="6"
-          class="w-full max-w-2xl p-4 border rounded-lg bg-primary_button"></textarea>
-        <div class="text-right text-sm text-gray-500 mb-4">
-          {{ wordCount }} / 300 {{ $t('form.wordCount') }}
-        </div>
+  <textarea v-model="summary" @input="countWords" :placeholder="$t('form.writeSummary')" rows="6"
+    class="w-full max-w-2xl p-4 border rounded-lg bg-primary_button"></textarea>
+  <div class="text-right text-sm text-gray-500 mb-4">
+    {{ wordCount }} / 300 {{ $t('form.wordCount') }}
+  </div>
 
-        <div class="flex flex-col sm:flex-row items-center sm:space-x-4 w-full max-w-2xl">
-          <input type="text" required v-model="title" :placeholder="$t('form.writeTitle')"
-            class="flex-auto p-2 border rounded-full bg-primary_button" />
-          <button type="button" @click="generateTitle"
-            class="bg-secondary hover:bg-secondary_hovered active:bg-secondary_active text-black flex-auto px-4 py-2 rounded-full">
-            {{ $t('form.generateTitle') }}
-          </button>
-        </div>
-      </div>
+  <div class="flex flex-col sm:flex-row items-center sm:space-x-4 w-full max-w-2xl">
+    <input type="text" required v-model="title" :placeholder="$t('form.writeTitle')"
+      class="flex-auto p-2 border rounded-full bg-primary_button" />
+    <button type="button" @click="generateTitle"
+      class="bg-secondary hover:bg-secondary_hovered active:bg-secondary_active text-black flex-auto px-4 py-2 rounded-full flex items-center justify-center"
+      :disabled="isLoading">
+      <span v-if="isLoading" class="loader"></span>
+      <span v-else>{{ $t('form.generateTitle') }}</span>
+    </button>
+  </div>
+
+  <!-- Mensaje de error -->
+  <div v-if="errorMessage" class="text-red-500 text-sm mt-2">
+    {{ errorMessage }}
+  </div>
+</div>
+
 
 
       <div class="flex flex-col items-center space-y-4 mb-16">
@@ -215,6 +223,7 @@ const loading = ref(false)
 const chapterNumberSpin = ref(1)
 const selectedLanguage = ref(null)
 const selectedUnits = ref(5)
+const isLoading = ref(false)
 
 
 
@@ -277,17 +286,32 @@ const onImageChange = (event, index) => {
     reader.readAsDataURL(file)
   }
 }
+const errorMessage = ref(''); // Nuevo estado para el mensaje de error
+
 
 const generateTitle = async () => {
+  isLoading.value = true; // Cambia el estado a cargando
+  errorMessage.value = ''; // Reinicia el mensaje de error
+
   if (summary.value) {
     let combinedSummary = summary.value + "\nPlease generate a creative and engaging title for this story in " + selectedLanguage.value + ". Make sure the title reflects the tone and theme of the story, and captures the reader's attention effectively.";
-    const text = await chatGpt(combinedSummary);
-    console.log(text)
-    title.value = text.trim();
+
+    try {
+      const text = await chatGpt(combinedSummary);
+      console.log(text);
+      title.value = text.trim();
+    } catch (error) {
+      console.error('Error generating title:', error);
+      errorMessage.value = t('error.titleGeneration'); // Mensaje de error traducido
+    }
   } else {
     console.error('Summary is not defined or is empty');
+    errorMessage.value = t('error.emptySummary'); // Mensaje de error si el resumen está vacío
   }
+
+  isLoading.value = false; // Cambia el estado a no cargando
 };
+
 
 
 
@@ -496,6 +520,21 @@ input[type="radio"]:checked {
   }
 
   100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  border: 2px solid transparent;
+  border-radius: 50%;
+  border-top-color: #000000;
+  width: 1em;
+  height: 1em;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
     transform: rotate(360deg);
   }
 }

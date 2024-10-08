@@ -78,8 +78,8 @@
         "generatingBook": "Generando el libro...",
         "chapter": "Capítulo",
         "lang": "Idioma del libro.",
-        "writeName": "Nombre del personaje"
-
+        "writeName": "Nombre del personaje",
+        "langWant": "¿Con que idioma te gustaria leer?"
     },
     "lang": {
         "Arabic": "Árabe",
@@ -101,10 +101,29 @@
         "password": "Contraseña",
         "submit": "Iniciar sesión"
     },
-        "notFound": {
-          "title": "Página No Encontrada",
-          "message": "Parece que la página que estás buscando no existe.",
-          "goHome": "Volver a la Página de Inicio"
-        }
-      
+    "notFound": {
+        "title": "Página No Encontrada",
+        "message": "Parece que la página que estás buscando no existe.",
+        "goHome": "Volver a la Página de Inicio"
+    },
+    "error": {
+        "titleGeneration": "Error al generar el título. Por favor, inténtalo de nuevo más tarde.",
+        "emptySummary": "Por favor, proporciona un resumen antes de generar un título."
+    },
+    "payment": {
+        "title": "¡Ya casi tienes el libro de tus sueños!",
+        "shippingAddress": "Dirección de envío",
+        "firstName": "Nombre",
+        "lastName": "Apellidos",
+        "email": "Correo Electrónico",
+        "phone": "Teléfono móvil",
+        "country": "País",
+        "state": "Provincia",
+        "postalCode": "CP",
+        "address": "Dirección de envío",
+        "submitButton": "Paga tu libro",
+        "paymentSummary": "Resumen del pago",
+        "product": "Producto:",
+        "total": "Total:"
+    }
 }

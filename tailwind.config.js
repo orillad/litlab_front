@@ -13,6 +13,7 @@ export default {
       colors: {
         primary: '#113A3A',
         primary_button: '#1d4141',
+        primary_hovered: '#1d7171',
         secondary: '#FED0CE',
         secondary_hovered: '#CBA6A4',
         secondary_active: ' #FEE2E1'

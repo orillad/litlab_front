@@ -1,4 +1,8 @@
 <template class="container">
+
+
+
+
     <div class="mx-auto flex flex-col md:flex-row items-center md:items-start justify-center py-8 px-4">
         <div class="text-center md:text-left md:w-1/2 md:pr-12">
             <h1 class="text-4xl md:text-5xl font-bold mb-4">
@@ -65,6 +69,8 @@
             </svg>
         </button>
     </div>
+
+
 
 </template>
 

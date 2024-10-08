@@ -12,12 +12,12 @@
         "what": "Què",
         "do": "fem?",
         "create_book": "Crearem el teu llibre,",
-    "with": "amb",
-    "history": "històries i",
-    "ilustration": "il·lustracions.",
-    "alucinar": "VOLDRÀS AL·LUCINAR?",
-    "description": "El teu fill o filla aprendrà el que vulguis mentre llegeix. Gràcies a la tecnologia hem pogut desenvolupar una plataforma mitjançant intel·ligència artificial que et permet crear al teu gust el llibre perfecte per a tu i el teu fill o filla amb els protagonistes que vulguis, amb els noms desitjats i amb les il·lustracions desitjades. Com si fos màgia, et brindem la millor experiència per a la lectura i il·lusió del teu fill o filla."
-  },
+        "with": "amb",
+        "history": "històries i",
+        "ilustration": "il·lustracions.",
+        "alucinar": "VOLDRÀS AL·LUCINAR?",
+        "description": "El teu fill o filla aprendrà el que vulguis mentre llegeix. Gràcies a la tecnologia hem pogut desenvolupar una plataforma mitjançant intel·ligència artificial que et permet crear al teu gust el llibre perfecte per a tu i el teu fill o filla amb els protagonistes que vulguis, amb els noms desitjats i amb les il·lustracions desitjades. Com si fos màgia, et brindem la millor experiència per a la lectura i il·lusió del teu fill o filla."
+    },
     "privacyPolicy": {
         "title": "Política de Privacitat",
         "lastUpdated": "Data d'última actualització: 19/09/2023",
@@ -49,12 +49,12 @@
         "contactTitle": "Contacte",
         "contactMessage": "Si tens alguna pregunta o inquietud sobre aquesta Política de Privacitat, si us plau posa't en contacte amb nosaltres a través de"
     },
-    "header":{
+    "header": {
         "home": "Inici",
         "products": "Productes",
         "us": "Nosaltres"
     },
-    "form":{
+    "form": {
         "step1Title": "1.",
         "question1": "De quina temàtica és el teu llibre?",
         "isChildrensBook": "És un llibre infantil?",
@@ -78,12 +78,10 @@
         "generatingBook": "Generant el llibre...",
         "chapter": "Capítol",
         "lang": "Llengua del llibre.",
-        "writeName": "Nom del personaje"
-
-        
+        "writeName": "Nom del personaje",
+        "langWant": "Amb quin idioma t'agradaria llegir?"
     },
-
-    "lang":{
+    "lang": {
         "Arabic": "Àrab",
         "Catalan": "Català",
         "Spanish": "Espanyol",
@@ -97,17 +95,55 @@
         "Russian": "Rus",
         "Basque": "Basc"
     },
-
     "login": {
         "title": "Inicia sessió a l'administració",
         "email": "Correu electrònic",
         "password": "Contrasenya",
         "submit": "Iniciar sessió"
-      },
-        "notFound": {
-          "title": "Pàgina no trobada",
-          "message": "Sembla que la pàgina que estàs buscant no existeix.",
-          "goHome": "Torna a la pàgina d'inici"
+    },
+    "notFound": {
+        "title": "Pàgina no trobada",
+        "message": "Sembla que la pàgina que estàs buscant no existeix.",
+        "goHome": "Torna a la pàgina d'inici"
+    },
+    "error": {
+        "titleGeneration": "Error en la generació del títol. Si us plau, torna-ho a provar més tard.",
+        "emptySummary": "Si us plau, proporciona un resum abans de generar un títol."
+    },
+    "about": {
+        "us": "Sobre Nosaltres",
+        "mission": "La nostra missió és proporcionar llibres personalitzats que inspiren i eduquen, fomentant la creativitat i l'aprenentatge a través de la lectura.",
+        "vision": "La nostra visió és convertir-nos en el líder en la creació de llibres personalitzats, fent que cada història sigui única i accessible per a tots.",
+        "values": "Els nostres valors inclouen la creativitat, la diversitat, la sostenibilitat i el compromís amb la qualitat. Creiem en l'impacte positiu de la literatura en les vides de les persones.",
+        "ourTeam": "El Nostre Equip",
+        "teamDescription": "Coneix l'equip apassionat que treballa darrere de cada llibre que creem. Junts, portem a la vida les històries que canvien vides.",
+        "member1": {
+            "name": "Arnau Farré",
+            "role": "Fundadora i Directora Creativa"
+        },
+        "member2": {
+            "name": "Oriol Lladó",
+            "role": "Desenvolupador i Especialista en Tecnologia"
+        },
+        "member3": {
+            "name": "Oriol Farré",
+            "role": "Responsable de Màrqueting i Comunicació"
         }
-      
+    },
+    "payment": {
+        "title": "Ja casi tens el llibre dels teus somnis!",
+        "shippingAddress": "Adreça d'enviament",
+        "firstName": "Nom",
+        "lastName": "Cognoms",
+        "email": "Correu Electrònic",
+        "phone": "Telèfon mòbil",
+        "country": "País",
+        "state": "Província",
+        "postalCode": "CP",
+        "address": "Adreça d'enviament",
+        "submitButton": "Paga el teu llibre",
+        "paymentSummary": "Resum del pagament",
+        "product": "Producte:",
+        "total": "Total:"
+    }
 }

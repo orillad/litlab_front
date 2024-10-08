@@ -8,9 +8,9 @@
                 <ul class="text-lg flex flex-col items-center gap-6 transition-all duration-500 py-12 mb-5">
                     <img src="~/assets/images/logo.png" alt="Logo" class="w-20">
                     <li><a href="#" class="text-white hover:text-secondary"><b>Productes</b></a></li>
-                    <li><a href="#" class="text-white hover:text-secondary">Home</a></li>
+                    <li><a href="/" class="text-white hover:text-secondary">Home</a></li>
                     <li><a href="#" class="text-white hover:text-secondary">Nosaltres</a></li>
-                    <li><a href="politica" class="text-white hover:text-secondary"><b>Politica de Privacitat</b></a></li>
+                    <li><a href="privacity" class="text-white hover:text-secondary"><b>Politica de Privacitat</b></a></li>
                 </ul>
 
 
