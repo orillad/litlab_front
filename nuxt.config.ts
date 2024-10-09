@@ -27,7 +27,15 @@ export default defineNuxtConfig({
         file: 'en.json',
       },
     ],
+    detectBrowserLanguage: {
+      useCookie: true, // Opcional: guarda l'idioma en cookies
+      cookieKey: 'i18n_redirected', // Clau de la cookie
+      alwaysRedirect: true, // Opcional: redirigeix sempre a l'idioma del navegador
+      fallbackLocale: 'en', // Idioma de reserva si no es pot determinar l'idioma
+    },
   },
+  
+  
   app: {
     head: {
       title: "Litlab",

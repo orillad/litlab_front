@@ -64,7 +64,7 @@
         "step2Title": "2.",
         "bookNeedsProtagonist": "Tot llibre necessita el seu protagonista.",
         "totalCharacters": "Quants personatges tindrà el teu llibre en total?",
-        "addNamesAndRoles": "Afegeix els noms i categories dels protagonistes de la teva història.",
+        "addNamesAndRoles": "Afegeix-hi els noms dels protagonistes de la teva història i posiciona per ordre de protagonisme.",
         "principal": "Principal",
         "secondary": "Secondari",
         "tertiary": "Terciari",
@@ -145,5 +145,10 @@
         "paymentSummary": "Resum del pagament",
         "product": "Producte:",
         "total": "Total:"
-    }
+    },
+    "cookiesBanner": {
+    "message": "Utilitzem cookies per millorar la teva experiència al nostre lloc. En continuar navegant, acceptes l'ús de galetes.",
+    "moreInfo": "Més informació",
+    "accept": "Acceptar"
+  }
 }

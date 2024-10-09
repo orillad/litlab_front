@@ -7,7 +7,7 @@
         "of": "de",
         "books": "los libros",
         "iaExperience": "Experiencia de IA",
-        "create": "Crea el mío",
+        "create": "Crea mi",
         "bookNow": "libro ahora",
         "what": "¿Qué",
         "do": "hacemos?",
@@ -64,7 +64,7 @@
         "step2Title": "2.",
         "bookNeedsProtagonist": "Todo libro requiere su protagonista.",
         "totalCharacters": "¿Cuántos personajes tendrá tu libro en total?",
-        "addNamesAndRoles": "Añade los nombres y categorías de los protagonistas de tu historia.",
+        "addNamesAndRoles": "Añade los nombres de los protagonistas de tu historia y posiciona por orden de protagonismo.",
         "principal": "Principal",
         "secondary": "Secondario",
         "tertiary": "Terciario",
@@ -79,7 +79,8 @@
         "chapter": "Capítulo",
         "lang": "Idioma del libro.",
         "writeName": "Nombre del personaje",
-        "langWant": "¿Con que idioma te gustaria leer?"
+        "langWant": "¿Con que idioma te gustaria leer?",
+        "countdown": "Tiempo de espera 15 min"
     },
     "lang": {
         "Arabic": "Árabe",
@@ -125,5 +126,11 @@
         "paymentSummary": "Resumen del pago",
         "product": "Producto:",
         "total": "Total:"
-    }
+    },
+    "cookiesBanner": {
+    "message": "Utilizamos cookies para mejorar tu experiencia en nuestro sitio. Al continuar navegando, aceptas el uso de cookies.",
+    "moreInfo": "Más información",
+    "accept": "Aceptar"
+  }
+    
 }

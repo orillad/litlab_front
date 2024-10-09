@@ -65,7 +65,7 @@
         "step2Title": "2.",
         "bookNeedsProtagonist": "Every book needs its protagonist.",
         "totalCharacters": "How many characters will your book have in total?",
-        "addNamesAndRoles": "Add the names and roles of your story's protagonists.",
+        "addNamesAndRoles": "Add the names of the protagonists of your story and rank them in order of prominence.",
         "principal": "Principal",
         "secondary": "Secondary",
         "tertiary": "Tertiary",
@@ -125,5 +125,10 @@
         "paymentSummary": "Payment Summary",
         "product": "Product:",
         "total": "Total:"
-    }
+    },
+    "cookiesBanner": {
+    "message": "We use cookies to improve your experience on our site. By continuing to browse, you accept the use of cookies.",
+    "moreInfo": "More information",
+    "accept": "Accept"
+  }
 }
