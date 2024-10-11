@@ -16,6 +16,7 @@
       <h1 class="text-5xl font-bold mb-8">{{ $t('form.step1Title') }}</h1>
       <h1 class="text-5xl mb-8">{{ $t('form.question1') }} <span class=" text-secondary font-bold">{{  $t('form.question1_2')  }}</span></h1>
 
+      
       <label class="block mb-6">{{ $t('form.isChildrensBook') }}</label>
       <div class="flex justify-center items-center space-x-40 mb-16">
         <label class="flex items-center space-x-4">
