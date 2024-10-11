@@ -56,20 +56,24 @@
     },
     "form": {
         "step1Title": "1.",
-        "question1": "De quina temàtica és el teu llibre?",
+        "question1": "De quina temàtica",
+        "question1_2": "és el teu llibre?",
         "isChildrensBook": "És un llibre infantil?",
         "yes": "Sí",
         "no": "No",
         "units": "Quantes unitats vols?",
         "step2Title": "2.",
-        "bookNeedsProtagonist": "Tot llibre necessita el seu protagonista.",
+        "bookNeedsProtagonist": "Tot llibre necessita",
+        "bookNeedsProtagonist2": "el seu protagonista.",
         "totalCharacters": "Quants personatges tindrà el teu llibre en total?",
         "addNamesAndRoles": "Afegeix-hi els noms dels protagonistes de la teva història i posiciona per ordre de protagonisme.",
         "principal": "Principal",
         "secondary": "Secondari",
         "tertiary": "Terciari",
         "step3Title": "3.",
-        "summarizeStory": "Resumeix-nos la teva història en un màxim de 300 paraules.",
+        "summarizeStory": "Resumeix-nos",
+        "summarizeStory2": "la teva història en un màxim de",
+        "summarizeStory3": "300 paraules.",
         "writeSummary": "Escriu aquí el teu resum...",
         "wordCount": "paraules",
         "writeTitle": "Escriu el títol aquí",
@@ -79,7 +83,8 @@
         "chapter": "Capítol",
         "lang": "Llengua del llibre.",
         "writeName": "Nom del personaje",
-        "langWant": "Amb quin idioma t'agradaria llegir?"
+        "langWant": "Amb quin idioma t'agradaria llegir?",
+        "addCharacter": "Afegir personaje"
     },
     "lang": {
         "Arabic": "Àrab",
@@ -108,7 +113,12 @@
     },
     "error": {
         "titleGeneration": "Error en la generació del títol. Si us plau, torna-ho a provar més tard.",
-        "emptySummary": "Si us plau, proporciona un resum abans de generar un títol."
+        "emptySummary": "Si us plau, proporciona un resum abans de generar un títol.",
+        "selectLanguage": "Si us plau, selecciona un idioma.",
+        "noTitle": "El títol encara no s'ha generat.",
+        "noProtagonist": "Si us plau, afegeix almenys un protagonista.",
+        "serverError": "S'ha produït un error al servidor. Torna-ho a intentar més tard.",
+        "generationError": "S'ha produït un error en generar la història. Torna-ho a intentar."
     },
     "about": {
         "us": "Sobre Nosaltres",
@@ -147,8 +157,8 @@
         "total": "Total:"
     },
     "cookiesBanner": {
-    "message": "Utilitzem cookies per millorar la teva experiència al nostre lloc. En continuar navegant, acceptes l'ús de galetes.",
-    "moreInfo": "Més informació",
-    "accept": "Acceptar"
-  }
+        "message": "Utilitzem cookies per millorar la teva experiència al nostre lloc. En continuar navegant, acceptes l'ús de galetes.",
+        "moreInfo": "Més informació",
+        "accept": "Acceptar"
+    }
 }
