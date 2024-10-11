@@ -14,7 +14,7 @@
 
     <form @submit.prevent="submitForm">
       <h1 class="text-5xl font-bold mb-8">{{ $t('form.step1Title') }}</h1>
-      <h1 class="text-5xl font-bold mb-8">{{ $t('form.question1') }}</h1>
+      <h1 class="text-5xl mb-8">{{ $t('form.question1') }} <span class=" text-secondary font-bold">{{  $t('form.question1_2')  }}</span></h1>
 
       <label class="block mb-6">{{ $t('form.isChildrensBook') }}</label>
       <div class="flex justify-center items-center space-x-40 mb-16">
@@ -59,72 +59,44 @@
         <img class="pt-10" src="~/assets/images/down_arrow.png" alt="">
       </div>
 
-
-
-
-
-
       <h1 class="text-5xl font-bold mb-8">{{ $t('form.step2Title') }}</h1>
-      <h1 class="text-5xl font-bold mb-8">{{ $t('form.bookNeedsProtagonist') }}</h1>
+      <h1 class="text-5xl mb-8">{{ $t('form.bookNeedsProtagonist') }} <span class="text-secondary font-bold">{{ $t('form.bookNeedsProtagonist2') }}</span></h1>
 
       <div class="flex flex-col items-center space-y-4 mb-16">
-        <label class="block mb-6 text-center">{{ $t('form.totalCharacters') }}</label>
-        <!-- <div class="flex items-center space-x-4 mb-4 w-80">
-          <input type="number"
-            class="form-input text-white text-center border bg-primary_button border-secondary rounded-full flex-1 px-4 py-2"
-            v-model="totalProtagonists" min="1" @change="updateProtagonists" />
-        </div> -->
-        <div class="custom-number-input h-10 w-32">
-
-          <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
-            <button data-action="decrement" @click.prevent="decrement"
-              class="bg-secondary text-black hover:text-gray-700 hover:bg-secondary_hovered h-full w-20  rounded-l-full cursor-pointer outline-none">
-              <span class="m-auto text-2xl font-thin">−</span>
-            </button>
-            <input type="number"
-              class="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none focus:outline-none text-center w-full bg-secondary rounded-none font-semibold text-md hover:text-black focus:text-black md:text-basecursor-default flex items-center text-gray-700 outline-none"
-              name="custom-input-number" v-model="totalProtagonists" min="1" @input="updateProtagonists" />
-
-            <button data-action="increment" @click.prevent="increment"
-              class="bg-secondary text-black hover:text-gray-700 hover:bg-secondary_hovered h-full w-20  rounded-r-full cursor-pointer outline-none">
-              <span class="m-auto text-2xl font-thin">+</span>
-            </button>
-          </div>
-        </div>
-
-
-
-
-
-
         <label class="block mb-6 text-center">{{ $t('form.addNamesAndRoles') }}</label>
-        <div class="justify-center items-center space-y-4 mb-8">
-          <draggable v-model="protagonists" class="space-y-8">
-            <!-- Iteramos sobre los protagonistas dentro del draggable -->
+        <div class="flex flex-col justify-center items-center space-y-4 mb-8">
+          <draggable v-model="protagonists" class="space-y-8 w-full">
             <template #item="{ element: protagonist, index }">
-              <div class="flex flex-col md:flex-row items-center mb-8 mx-2" :key="index">
-                <!-- Número de orden -->
-                <span class="text-secondary font-bold mb-2 md:mb-0 md:mr-4">{{ index + 1 }}.</span>
-                <!-- Campo para el nombre del protagonista -->
-                <div class="relative flex items-center w-full md:w-auto">
-                  <input type="text"
-                    class="form-input text-white text-center border bg-primary_button border-secondary rounded-full w-full md:w-96 px-4 py-2"
-                    v-model="protagonist.name" :placeholder="$t('form.writeName')" />
-                  <!-- Ícono de tres barras horizontales para arrastrar, dentro del input -->
+              <div class="flex flex-row md:flex-row items-center justify-between mb-4 w-full md:w-auto mx-2">
+                <span class="text-secondary font-bold mb-2 mt-0 mr-4 hidden md:block">{{ index + 1 }}.</span>
+                <div class="flex items-center w-full md:w-96 relative">
                   <span class="absolute left-3">
                     <img src="~/assets/images/drag.svg" alt="Drag icon">
                   </span>
+                  <input type="text"
+                    class="form-input text-white text-center border bg-primary_button border-secondary rounded-full w-full px-12 py-2"
+                    v-model="protagonist.name" :placeholder="$t('form.writeName')" />
                 </div>
+                <button class="ml-4 mt-0" @click.prevent="decrement(index)">
+                  <img src="~/assets/images/trash.svg" alt="Delete icon">
+                </button>
               </div>
             </template>
           </draggable>
+
+          <button data-action="increment" @click.prevent="increment"
+            class="bg-secondary font-bold text-primary w-full md:w-96 px-4 py-2 mt-4 rounded-full border border-primary hover:bg-secondary hover:text-black transition-all duration-300 ease-in-out">
+            {{ $t('form.addCharacter') }}
+          </button>
         </div>
+
+
 
         <img class="pt-10" src="~/assets/images/down_arrow.png" alt="">
       </div>
 
       <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">{{ $t('form.step3Title') }}</h1>
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">{{ $t('form.summarizeStory') }}</h1>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl  mb-6">{{ $t('form.summarizeStory') }} <span class="text-secondary font-bold">{{ $t('form.summarizeStory2') }}</span> <span class="font-bold">{{ $t('form.summarizeStory3') }}</span></h1>
 
       <div class="flex flex-col items-center space-y-4 mb-8">
         <textarea v-model="summary" @input="countWords" :placeholder="$t('form.writeSummary')" rows="6"
@@ -134,7 +106,7 @@
         </div>
 
         <div class="flex flex-col sm:flex-row items-center sm:space-x-4 space-y-4 sm:space-y-0 w-full max-w-2xl">
-          <input type="text" required v-model="title" :placeholder="$t('form.writeTitle')"
+          <input type="text" v-model="title" :placeholder="$t('form.writeTitle')"
             class="flex-auto p-2 border rounded-full bg-primary_button" />
           <button type="button" @click="generateTitle"
             class="bg-secondary hover:bg-secondary_hovered active:bg-secondary_active text-black flex-auto px-4 py-2 rounded-full flex items-center justify-center"
@@ -282,26 +254,32 @@ const errorMessage = ref(''); // Nuevo estado para el mensaje de error
 
 
 const generateTitle = async () => {
-  isLoading.value = true; // Cambia el estado a cargando
+  isLoading.value = true;
   errorMessage.value = ''; // Reinicia el mensaje de error
 
-  if (summary.value) {
-    let combinedSummary = summary.value + "\nPlease generate a creative and engaging title for this story in " + selectedLanguage.value + ". Make sure the title reflects the tone and theme of the story, and captures the reader's attention effectively.";
-
-    try {
-      const text = await chatGpt(combinedSummary);
-      console.log(text);
-      title.value = text.trim();
-    } catch (error) {
-      console.error('Error generating title:', error);
-      errorMessage.value = t('error.titleGeneration'); // Mensaje de error traducido
-    }
-  } else {
-    console.error('Summary is not defined or is empty');
-    errorMessage.value = t('error.emptySummary'); // Mensaje de error si el resumen está vacío
+  if (!selectedLanguage.value) {
+    errorMessage.value = t('error.selectLanguage'); // Mensaje de error si no se selecciona un idioma
+    isLoading.value = false;
+    return;
   }
 
-  isLoading.value = false; // Cambia el estado a no cargando
+  if (!summary.value) {
+    errorMessage.value = t('error.emptySummary'); // Mensaje de error si el resumen está vacío
+    isLoading.value = false;
+    return;
+  }
+
+  let combinedSummary = summary.value + "\nPlease generate a creative and engaging title for this story in " + selectedLanguage.value + ". Make sure the title reflects the tone and theme of the story, and captures the reader's attention effectively.";
+
+  try {
+    const text = await chatGpt(combinedSummary);
+    title.value = text.trim();
+  } catch (error) {
+    console.error('Error generating title:', error);
+    errorMessage.value = t('error.titleGeneration'); // Mensaje de error traducido
+  }
+
+  isLoading.value = false; 
 };
 
 
@@ -347,42 +325,6 @@ const generateImageForChapter = async (chapterText, chapterNumber) => {
   return imageUrl;
 }
 
-// const generateEditImage = async (prompt, imagePath) => {
-//   try {
-//     // Log the image path to confirm it's passed correctly
-//     console.log(imagePath);
-
-//     // Call the API to get the edited image URL
-//     const imageUrl = await edit(prompt, imagePath);
-//     console.log(imageUrl);
-
-//     // Fetch the image from the returned URL with CORS mode
-//     const response = await fetch(imageUrl, { mode: 'cors' });
-
-//     // Check if the fetch was successful
-//     if (!response.ok) {
-//       throw new Error(`Failed to fetch image: ${response.statusText}`);
-//     }
-
-//     // Convert the response to a Blob
-//     const imageBlob = await response.blob();
-//     console.log(response);
-//     console.log(imageBlob);
-
-//     // Convert the Blob to an object URL
-//     const imageObjectURL = URL.createObjectURL(imageBlob);
-
-//     // Return the object URL for further use
-//     return imageObjectURL;
-//   } catch (error) {
-//     console.error('Error generating edited image:', error);
-//     // Handle errors appropriately (e.g., return a fallback value or throw the error)
-//     throw error;
-//   }
-// }
-
-
-
 
 
 const generateChapter = async (chapterNumber) => {
@@ -401,43 +343,73 @@ const generateChapter = async (chapterNumber) => {
 
 
 const submitForm = async () => {
-  loading.value = true;
+  errorMessage.value = ''; // Reinicia el mensaje de error
+  loading.value = true; // Inicia el spinner de carga
+
+  // Validaciones previas
+  if (!selectedLanguage.value) {
+    errorMessage.value = t('error.selectLanguage'); // Mensaje de error si no se selecciona un idioma
+    loading.value = false;
+    return;
+  }
+
+  if (!title.value) {
+    errorMessage.value = t('error.noTitle'); // Mensaje de error si no se ha generado el título
+    loading.value = false;
+    return;
+  }
+
+  if (!summary.value) {
+    errorMessage.value = t('error.emptySummary'); // Mensaje de error si el resumen está vacío
+    loading.value = false;
+    return;
+  }
+
+  if (protagonists.value.length === 0 || !protagonists.value[0].name) {
+    errorMessage.value = t('error.noProtagonist'); // Mensaje de error si no hay protagonistas
+    loading.value = false;
+    return;
+  }
 
   try {
     const chapters = [];
-    const chapterNumbers = 1;
-    for (let i = 1; i <= chapterNumbers; i++) {
+    const totalChapters = 10; // Número de capítulos a generar
+
+    for (let i = 1; i <= totalChapters; i++) {
       const chapter = await generateChapter(i);
       chapters.push(chapter);
-      chapterNumberSpin.value++;
+      chapterNumberSpin.value++; // Incrementa el número de capítulo mostrado en el spinner
     }
 
     loading.value = false;
 
-    // Enviar la data del libro al backend para generar el libro y guardar temporalmente
+    // Genera el libro después de obtener todos los capítulos
     const response = await generateBook(title.value, chapters, selectedLanguage.value);
 
-    console.log("generateBook response", response);
-    localStorage.setItem('jwt', response.token)
-
-
-
     if (response.success) {
-      // Redirigir a la página de pago
+      // Almacena el token JWT si el libro se genera con éxito
+      localStorage.setItem('jwt', response.token); // Guarda el JWT en el localStorage
+      console.log('JWT Token:', response.token); // Muestra el token en la consola
+
+      // Redirige al usuario a la página de pago con el ID del libro
       window.location.href = `/payment?bookName=${response.bookId}`;
     } else {
       console.error('Error generating the book on the server');
+      errorMessage.value = t('error.serverError'); // Error del servidor
     }
   } catch (error) {
-    loading.value = false;
     console.error('Error generating story or image:', error);
+    errorMessage.value = t('error.generationError'); // Mensaje de error general para la generación
+    loading.value = false; // Detén el spinner si ocurre un error
   }
-}
+};
 
-function decrement() {
+
+function decrement(index) {
   if (totalProtagonists.value > 1) {
+    protagonists.value.splice(index, 1); 
     totalProtagonists.value--;
-    updateProtagonists();
+     updateProtagonists();
   }
 }
 

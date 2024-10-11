@@ -56,21 +56,25 @@
     },
     "form": {
         "step1Title": "1.",
-        "question1": "What is the theme of your book?",
+        "question1": "What is the theme",
+        "question1_2": "of your book?",
         "isChildrensBook": "Is it a children's book?",
         "yes": "Yes",
         "no": "No",
         "units": "How many units do you want?",
         "langWant": "What language would you like to read in?",
         "step2Title": "2.",
-        "bookNeedsProtagonist": "Every book needs its protagonist.",
+        "bookNeedsProtagonist": "Every book needs",
+        "bookNeedsProtagonist2": "its protagonist.",
         "totalCharacters": "How many characters will your book have in total?",
         "addNamesAndRoles": "Add the names of the protagonists of your story and rank them in order of prominence.",
         "principal": "Principal",
         "secondary": "Secondary",
         "tertiary": "Tertiary",
         "step3Title": "3.",
-        "summarizeStory": "Summarize your story in a maximum of 300 words.",
+        "summarizeStory": "Summarize ",
+        "summarizeStory2": "your story in a maximum of",
+        "summarizeStory3": "300 words.",
         "writeSummary": "Write your summary here...",
         "wordCount": "words",
         "writeTitle": "Write the title here",
@@ -79,7 +83,8 @@
         "generatingBook": "Generating the book...",
         "chapter": "Chapter",
         "lang": "Language of the book.",
-        "writeName": "Name of the character"
+        "writeName": "Name of the character",
+        "addCharacter": "Add character"
     },
     "lang": {
         "Arabic": "Arabic",
@@ -108,7 +113,12 @@
     },
     "error": {
         "titleGeneration": "Error generating title. Please try again later.",
-        "emptySummary": "Please provide a summary before generating a title."
+        "emptySummary": "Please provide a summary before generating a title.",
+        "selectLanguage": "Please select a language.",
+        "noTitle": "The title has not been generated yet.",
+        "noProtagonist": "Please add at least one protagonist.",
+        "serverError": "An error occurred on the server. Please try again later.",
+        "generationError": "An error occurred while generating the story. Please try again."
     },
     "payment": {
         "title": "You're almost there to get the book of your dreams!",
@@ -127,8 +137,8 @@
         "total": "Total:"
     },
     "cookiesBanner": {
-    "message": "We use cookies to improve your experience on our site. By continuing to browse, you accept the use of cookies.",
-    "moreInfo": "More information",
-    "accept": "Accept"
-  }
+        "message": "We use cookies to improve your experience on our site. By continuing to browse, you accept the use of cookies.",
+        "moreInfo": "More information",
+        "accept": "Accept"
+    }
 }
