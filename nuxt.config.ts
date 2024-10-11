@@ -1,12 +1,9 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   plugins: ['~/utils/utils.js'],
 
   devtools: { enabled: false },
   compatibilityDate: "2024-07-03",
   modules: ['@nuxtjs/i18n'],
-
-
 
   i18n: {
     strategy: 'no_prefix',
@@ -34,8 +31,7 @@ export default defineNuxtConfig({
       fallbackLocale: 'en', // Idioma de reserva si no es pot determinar l'idioma
     },
   },
-  
-  
+
   app: {
     head: {
       title: "Litlab",
@@ -59,7 +55,11 @@ export default defineNuxtConfig({
         {
           name: 'twitter:description',
           content: 'Genera libros con IA, selecciona personajes, nombres e historias personalizadas. ¡Da vida a la imaginación de tu hijo!'
-        }
+        },
+        {
+          name: 'google-site-verification',
+          content: '5EumjvGmKAlWZDip428_AIWrpl6XzTe-lwGJGbssji4'
+        } // Added Google site verification
       ],
       link: [
         {
@@ -69,13 +69,13 @@ export default defineNuxtConfig({
       ]
     }
   },
-  css: ['~/assets/css/main.css',
-  ],
+  
+  css: ['~/assets/css/main.css'],
+  
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
-
 })
