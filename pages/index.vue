@@ -5,14 +5,16 @@
 
     <div class="mx-auto flex flex-col md:flex-row items-center md:items-start justify-center py-8 px-4">
         <div class="text-center md:text-left md:w-1/2 md:pr-12">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">
+            <h1 class="text-4xl md:text-5xl mb-4">
                 {{ $t("index.the") }}
-                <span class="text-secondary">{{ $t("index.future") }}</span>
+                <span class="text-secondary  font-bold">{{ $t("index.future") }}</span>
                 <br>
                 {{ $t("index.of") }}
-                <span class="text-secondary">{{ $t("index.books") }}</span>
+                <span class="text-secondary font-bold">{{ $t("index.books") }}</span>
                 <br>
-                {{ $t("index.iaExperience") }}.
+                <span class=" font-bold">
+                    {{ $t("index.iaExperience") }}.
+                </span>
             </h1>
             <p class="text-base md:text-lg mb-8">{{ $t("index.presentation") }}</p>
 
@@ -48,13 +50,13 @@
     </div>
 
     <div class="text-center max-w-4xl mx-auto px-4">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        <h1 class="text-4xl md:text-5xl mb-4">
             {{ $t("index.create_book") }}
             <br>
             {{ $t("index.with") }}
-            <span class="text-secondary ">{{ $t("index.history") }}</span>
+            <span class="text-secondary font-bold ">{{ $t("index.history") }}</span>
             <br>
-            <span class="text-secondary">{{ $t("index.ilustration") }}</span>
+            <span class="text-secondary font-bold ">{{ $t("index.ilustration") }}</span>
         </h1>
         <p class="text-base md:text-lg mt-6 font-bold">{{ $t("index.alucinar") }}</p>
         <p class="text-base md:text-lg mt-6">{{ $t("index.description") }}</p>
