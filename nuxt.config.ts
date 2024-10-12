@@ -25,10 +25,10 @@ export default defineNuxtConfig({
       },
     ],
     detectBrowserLanguage: {
-      useCookie: true, // Opcional: guarda l'idioma en cookies
-      cookieKey: 'i18n_redirected', // Clau de la cookie
-      alwaysRedirect: true, // Opcional: redirigeix sempre a l'idioma del navegador
-      fallbackLocale: 'en', // Idioma de reserva si no es pot determinar l'idioma
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      alwaysRedirect: true,
+      fallbackLocale: 'en',
     },
   },
 
@@ -59,13 +59,17 @@ export default defineNuxtConfig({
         {
           name: 'google-site-verification',
           content: '5EumjvGmKAlWZDip428_AIWrpl6XzTe-lwGJGbssji4'
-        } // Added Google site verification
+        }
       ],
       link: [
         {
           rel: 'stylesheet',
           href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap'
-        }
+        },
+        {
+          rel: 'icon',
+          href: '/favicon.ico'
+        } // Updated favicon link
       ]
     }
   },
