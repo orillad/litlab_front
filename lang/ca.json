@@ -84,7 +84,9 @@
         "lang": "Llengua del llibre.",
         "writeName": "Nom del personaje",
         "langWant": "Amb quin idioma t'agradaria llegir?",
-        "addCharacter": "Afegir personaje"
+        "addCharacter": "Afegir personaje",
+        "units1": "Unitats"
+
     },
     "lang": {
         "Arabic": "Àrab",

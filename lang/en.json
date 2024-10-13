@@ -84,7 +84,9 @@
         "chapter": "Chapter",
         "lang": "Language of the book.",
         "writeName": "Name of the character",
-        "addCharacter": "Add character"
+        "addCharacter": "Add character",
+        "units1": "Units"
+
     },
     "lang": {
         "Arabic": "Arabic",

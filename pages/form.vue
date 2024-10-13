@@ -100,7 +100,7 @@
           @click="scrollToNextStep('step3')" />
       </div>
 
-      <h1 ref="step3" class="text-5xl sm:text-4xl md:text-5xl font-bold mb-6">{{ $t('form.step3Title') }}</h1>
+      <h1 ref="step3" class="text-5xl font-bold mb-6">{{ $t('form.step3Title') }}</h1>
       <h1 class="text-4xl sm:text-4xl md:text-5xl  mb-6">{{ $t('form.summarizeStory') }} <span
           class="text-secondary font-bold">{{ $t('form.summarizeStory2') }}</span> <span class="font-bold">{{
             $t('form.summarizeStory3') }}</span></h1>
