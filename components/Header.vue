@@ -1,7 +1,7 @@
 <template>
   <header class='flex py-4 px-4 sm:px-10 bg-primary min-h-[80px] tracking-wide relative z-50'>
     <div class='flex flex-wrap items-center gap-5 w-full'>
-      <a href="/"><img src="~/assets/images/logo.svg" alt="logo" class='w-40 max-lg:mr-5' /></a>
+      <a href="/"><img src="~/assets/images/logo.svg" alt="logo" class='w-24 sm:w-32 max-lg:mr-5' /></a>
 
       <div id="collapseMenu"
         class='max-lg:hidden lg:!flex lg:ml-auto max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-50 max-lg:before:inset-0 max-lg:before:z-50'>

@@ -14,7 +14,7 @@
 
 
                 <div class="flex justify-center items-center mb-14">
-                    <img src="~/assets/images/footer.svg" alt="" class="w-full max-w-full">
+                    <img src="~/assets/images/pattern_footer.png" alt="" class="w-full max-w-full">
                 </div>
                 <span class="text-lg text-gray-500 text-center block">litlab© 2024</span>
             </div>

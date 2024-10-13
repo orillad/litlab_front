@@ -85,7 +85,8 @@
         "writeName": "Nombre del personaje",
         "langWant": "¿Con que idioma te gustaria leer?",
         "countdown": "Tiempo de espera 15 min",
-        "addCharacter": "Añadir personaje"
+        "addCharacter": "Añadir personaje",
+        "units1": "Unidades"
     },
     "lang": {
         "Arabic": "Árabe",

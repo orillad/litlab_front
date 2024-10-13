@@ -14,11 +14,12 @@
 
     <form @submit.prevent="submitForm">
       <h1 class="text-5xl font-bold mb-8">{{ $t('form.step1Title') }}</h1>
-      <h1 class="text-5xl mb-8">{{ $t('form.question1') }} <span class=" text-secondary font-bold">{{  $t('form.question1_2')  }}</span></h1>
+      <h1 class="text-4xl mb-8">{{ $t('form.question1') }} <span class=" text-secondary font-bold">{{
+        $t('form.question1_2') }}</span></h1>
 
-      
+
       <label class="block mb-6">{{ $t('form.isChildrensBook') }}</label>
-      <div class="flex justify-center items-center space-x-40 mb-16">
+      <div class="flex justify-center items-center space-x-32 mb-14">
         <label class="flex items-center space-x-4">
           <span>{{ $t('form.yes') }}</span>
           <input type="radio" value="yes" v-model="isChildrensBook">
@@ -31,7 +32,7 @@
 
 
 
-      <div class="flex flex-col items-center space-y-4 mb-16">
+      <div class="flex flex-col items-center  mb-16">
         <label class="block text-center mb-6">{{ $t('form.langWant') }}</label>
         <div class="relative">
           <!-- Botón que abre el selector -->
@@ -57,11 +58,13 @@
             </ul>
           </div>
         </div>
-        <img class="pt-10" src="~/assets/images/down_arrow.png" alt="">
+        <img class="pt-10 cursor-pointer" src="~/assets/images/down_arrow.png" alt=""
+          @click="scrollToNextStep('step2')" />
       </div>
 
-      <h1 class="text-5xl font-bold mb-8">{{ $t('form.step2Title') }}</h1>
-      <h1 class="text-5xl mb-8">{{ $t('form.bookNeedsProtagonist') }} <span class="text-secondary font-bold">{{ $t('form.bookNeedsProtagonist2') }}</span></h1>
+      <h1 ref="step2" class="text-5xl font-bold mb-8">{{ $t('form.step2Title') }}</h1>
+      <h1 class="text-4xl mb-8">{{ $t('form.bookNeedsProtagonist') }} <span class="text-secondary font-bold">{{
+        $t('form.bookNeedsProtagonist2') }}</span></h1>
 
       <div class="flex flex-col items-center space-y-4 mb-16">
         <label class="block mb-6 text-center">{{ $t('form.addNamesAndRoles') }}</label>
@@ -93,27 +96,30 @@
 
 
 
-        <img class="pt-10" src="~/assets/images/down_arrow.png" alt="">
+        <img class="pt-10 cursor-pointer" src="~/assets/images/down_arrow.png" alt=""
+          @click="scrollToNextStep('step3')" />
       </div>
 
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">{{ $t('form.step3Title') }}</h1>
-      <h1 class="text-3xl sm:text-4xl md:text-5xl  mb-6">{{ $t('form.summarizeStory') }} <span class="text-secondary font-bold">{{ $t('form.summarizeStory2') }}</span> <span class="font-bold">{{ $t('form.summarizeStory3') }}</span></h1>
+      <h1 ref="step3" class="text-5xl sm:text-4xl md:text-5xl font-bold mb-6">{{ $t('form.step3Title') }}</h1>
+      <h1 class="text-4xl sm:text-4xl md:text-5xl  mb-6">{{ $t('form.summarizeStory') }} <span
+          class="text-secondary font-bold">{{ $t('form.summarizeStory2') }}</span> <span class="font-bold">{{
+            $t('form.summarizeStory3') }}</span></h1>
 
       <div class="flex flex-col items-center space-y-4 mb-8">
         <textarea v-model="summary" @input="countWords" :placeholder="$t('form.writeSummary')" rows="6"
-          class="w-full max-w-2xl p-4 border rounded-lg bg-primary_button"></textarea>
+          class="w-full max-w-2xl p-4 border rounded-lg border-secondary bg-primary_button"></textarea>
         <div class="text-right text-sm text-gray-500 mb-4">
           {{ wordCount }} / 300 {{ $t('form.wordCount') }}
         </div>
 
         <div class="flex flex-col sm:flex-row items-center sm:space-x-4 space-y-4 sm:space-y-0 w-full max-w-2xl">
           <input type="text" v-model="title" :placeholder="$t('form.writeTitle')"
-            class="flex-auto p-2 border rounded-full bg-primary_button" />
+            class="flex-auto p-2 border border-secondary rounded-full bg-primary_button" />
           <button type="button" @click="generateTitle"
             class="bg-secondary hover:bg-secondary_hovered active:bg-secondary_active text-black flex-auto px-4 py-2 rounded-full flex items-center justify-center"
             :disabled="isLoading">
             <span v-if="isLoading" class="loader"></span>
-            <span v-else>{{ $t('form.generateTitle') }}</span>
+            <span class="font-bold text-primary" v-else>{{ $t('form.generateTitle') }}</span>
           </button>
         </div>
 
@@ -125,23 +131,40 @@
 
 
 
-      <div class="flex flex-col items-center space-y-4 mb-16">
-        <label class="block mb-4">{{ $t('form.units') }}</label>
-        <select id="units" class="bg-secondary border text-center text-black text-sm rounded-full block w-32 p-2.5"
-          v-model="selectedUnits">
-          <option value="1">1</option>
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="20">20</option>
-        </select>
-      </div>
 
+
+      <div class="flex flex-col items-center mb-16">
+        <label class="block text-center mb-6">{{ $t('form.units') }}</label>
+        <div class="relative">
+          <!-- Botón que abre el selector -->
+          <button @click.prevent="toggleButton" :class="[
+            'flex mx-auto w-64 font-bold bg-secondary text-primary py-2 px-4 leading-tight focus:outline-none focus:text-primary hover:bg-secondary_hovered items-center justify-center space-x-2',
+            isPressed ? 'rounded-t-[21px]' : 'rounded-full'
+          ]">
+            <span>{{ selectedUnits ? selectedUnits : $t('form.units1') }}</span>
+
+          </button>
+
+          <!-- Menú desplegable para seleccionar idioma -->
+          <div v-show="isDropdownOpen" class="absolute w-full bg-white z-10 shadow-lg rounded-b-[21px]">
+            <ul>
+              <li v-for="(unit, index) in units" :key="unit" :class="[
+                'px-4 py-2 bg-secondary text-black hover:bg-gray-200 cursor-pointer',
+                unit === Object.values(units)[Object.values(units).length - 1] ? 'rounded-b-[21px]' : 'rounded-none'
+              ]" @click="selectUits(unit)">
+                {{ unit }}
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
 
 
       <div class="flex justify-center items-center mt-4">
         <button type="submit"
           class="bg-secondary hover:bg-secondary_hovered active:bg-secondary_active text-black px-6 py-3 rounded-full flex items-center space-x-2">
-          <span>{{ $t('form.generateBook') }}</span>
+          <span class="font-bold">{{ $t('form.generateBook') }}</span>
           <img src="~/assets/images/book.svg" alt="" class="h-6 w-6">
         </button>
 
@@ -187,9 +210,18 @@ const wordCount = ref(0)
 const loading = ref(false)
 const chapterNumberSpin = ref(1)
 const selectedLanguage = ref(null)
-const selectedUnits = ref(5)
+const selectedUnits = ref(null)
 const isLoading = ref(false)
 
+const step2 = ref(null);
+const step3 = ref(null);
+
+const scrollToNextStep = (stepRef) => {
+  const element = stepRef === 'step2' ? step2.value : step3.value;
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+};
 
 
 const toggleButton = () => {
@@ -221,8 +253,19 @@ const languages = {
 }
 
 
+const units = {
+  1: 1,
+  5: 5,
+  10: 10,
+  20: 20
+}
+
 const selectLanguage = (key) => {
   selectedLanguage.value = key
+  toggleButton();
+}
+const selectUits = (key) => {
+  selectedUnits.value = key
   toggleButton();
 }
 
@@ -280,7 +323,7 @@ const generateTitle = async () => {
     errorMessage.value = t('error.titleGeneration'); // Mensaje de error traducido
   }
 
-  isLoading.value = false; 
+  isLoading.value = false;
 };
 
 
@@ -294,11 +337,17 @@ const countWords = () => {
   }
 }
 const generatePromptForChapter = (chapterNumber) => {
-  const prompt = `Generate Chapter ${chapterNumber} of an extensive story in ${selectedLanguage.value} based on the following details:
-  - Each chapter should be a minimum of 2000 words.
-  - Include detailed character development, rich descriptions, and substantial dialogue.
-  - Explore both internal and external conflicts.
-  - Ensure a coherent narrative style and tone with a clear evolution of plot and characters.`;
+  const prompt = isChildrensBook.value 
+    ? `Generate Chapter ${chapterNumber} of a fun and colorful children's story in ${selectedLanguage.value} based on the following details:
+    - Each chapter should be a minimum of 500 words.
+    - Use simple language and engaging characters to capture children's attention.
+    - Include plenty of dialogue and imaginative scenarios.
+    - Ensure a clear moral lesson or message in the story.`
+    : `Generate Chapter ${chapterNumber} of an extensive story in ${selectedLanguage.value} based on the following details:
+    - Each chapter should be a minimum of 2000 words.
+    - Include detailed character development, rich descriptions, and substantial dialogue.
+    - Explore both internal and external conflicts.
+    - Ensure a coherent narrative style and tone with a clear evolution of plot and characters.`;
 
   return `${prompt}
   - Is it a children's book: ${isChildrensBook.value}
@@ -316,7 +365,7 @@ const summarizeChapterText = async (chapterText) => {
 
 const generateImageForChapter = async (chapterText, chapterNumber) => {
   const summarizedText = await summarizeChapterText(chapterText);
-  const promptForImage = `Create a detailed image that visually represents the key themes and atmosphere of Chapter ${chapterNumber} of a story. Focus on capturing the essence and mood of the described scenes without including any text. Ensure the image conveys the narrative elements effectively, using the following description as inspiration: ${summarizedText}`;
+  const promptForImage = `Create a detailed image that visually represents the key themes and atmosphere of Chapter ${chapterNumber} of a story. Focus on capturing the essence and mood of the described scenes without including any text or written elements. The image should convey the narrative elements effectively, using the following description as inspiration: ${summarizedText}. Ensure that the final artwork purely reflects the chapter's essence through visual storytelling.`;
 
 
   // Llama a la API para obtener la URL de la imagen
@@ -408,9 +457,9 @@ const submitForm = async () => {
 
 function decrement(index) {
   if (totalProtagonists.value > 1) {
-    protagonists.value.splice(index, 1); 
+    protagonists.value.splice(index, 1);
     totalProtagonists.value--;
-     updateProtagonists();
+    updateProtagonists();
   }
 }
 
